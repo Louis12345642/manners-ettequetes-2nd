@@ -17,7 +17,12 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'excert' => fake()->sentence(),
+            'author' => fake()->name(),
+            'body' => fake()->sentence(),
+
+
         ];
     }
 }
