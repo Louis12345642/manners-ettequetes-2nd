@@ -10,6 +10,10 @@ class Post extends Model
 {
     use HasFactory;
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
     public function Author(){
         return $this->belongsTo(User::class);
     }
