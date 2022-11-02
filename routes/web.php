@@ -28,4 +28,39 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+route::get('/users',function(){
+return Inertia::render('users',[
+    'users'=>[
+      'john'=>[
+        'name'=>'john deo',
+        'age'=>24,
+        'nationality'=>'american'
+      ],
+      'robert'=>[
+        'name'=>'robert',
+        'age'=>20,
+        'nationality'=>'canadian'
+      ],
+      'bosco'=>[
+        'name'=>'bosco',
+        'age'=>30,
+        'nationality'=>'mexican'
+      ]
+    ]
+
+]);
+});
+
+
+route::get('/john',function(){
+    return Inertia::render('john');
+});
+route::get('bosco',function(){
+    return Inertia::render('bosco');
+});
+
+route::get('/robert',function(){
+    return Inertia::render('robert');
+});
 require __DIR__.'/auth.php';
