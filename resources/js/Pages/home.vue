@@ -11,8 +11,14 @@ import post from '../Components/posts/post.vue'
 
 export default{
   components: { Layeout, FeaturedPost, AllPostsHeader ,post},
-    setup() {
+  props:{
+    posts:String
+  },
+    setup(props){
 
+return{
+
+}
     },
 }
 </script>
@@ -26,7 +32,7 @@ export default{
           class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
         >
           Latest
-          <span class="secondary-color">Manners and Ettequettes</span> News
+          <span class="secondary-color"> Manners and ettiquetes</span> News
           articles
         </h2>
         <div class="flex gap-6 justify-center">
@@ -41,7 +47,7 @@ export default{
         </div>
       </div>
     </section>
-<FeaturedPost/>
+<FeaturedPost :posts='posts'/>
 <AllPostsHeader/>
 <post/>
 

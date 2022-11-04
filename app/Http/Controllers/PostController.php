@@ -18,7 +18,9 @@ class PostController extends Controller
     {
         $posts = Post::all();
         // return inertia('Posts/home',compact('posts'));
-        return Inertia::render('home');
+        return Inertia::render('home',[
+            'posts'=>$posts
+        ]);
     }
 
     /**

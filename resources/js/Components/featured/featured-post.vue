@@ -1,5 +1,16 @@
 
 <script>
+export default{
+   props:['posts'],
+    setup(props){
+const FeaturedPost=props.posts
+
+return{
+    FeaturedPost
+}
+
+    }
+}
 </script>
 <template>
     <main>
@@ -37,12 +48,10 @@
                 </div>
 
                 <h1 class="mb-4 font-mono font-semibold text-2xl">
-                  Good Manners and ettiquetes
+                {{FeaturedPost[0].title}}
                 </h1>
                 <p class="text-gray-900 leading-7 text-md">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                  molestias, voluptate odio quo natus labore ex repellat
-                  praesentium rerum nisi.
+                    {{FeaturedPost[0].excert}}
                 </p>
                 <p class="mt-2 block text-gray-400 text-xs">
                   Published <time>1 day ago</time>
@@ -52,7 +61,7 @@
                     <p
                       class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                     >
-                      By John Doe
+                    {{FeaturedPost[0].author}}
                     </p>
                     <img
                       class="mt-7 w-12 h-12 rounded-full round-border"
@@ -205,12 +214,10 @@
 
             <article class="p-5">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
-                Good Manners and ettiquetes
+                {{FeaturedPost[1].title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                molestias, voluptate odio quo natus labore ex repellat
-                praesentium rerum nisi.
+                {{FeaturedPost[1].excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
                 Published <time>1 day ago</time>
@@ -222,7 +229,7 @@
                   <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                    By John Doe
+                  {{FeaturedPost[1].author}}
                   </p>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
@@ -269,12 +276,10 @@
 
             <article class="p-5">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
-                Good Manners and ettiquetes
+                {{FeaturedPost[2].title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                molestias, voluptate odio quo natus labore ex repellat
-                praesentium rerum nisi.
+                {{FeaturedPost[2].excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
                 Published <time>1 day ago</time>
@@ -286,7 +291,7 @@
                   <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                    By John Doe
+                  {{FeaturedPost[2].author}}
                   </p>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
