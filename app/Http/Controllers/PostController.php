@@ -23,6 +23,14 @@ class PostController extends Controller
         ]);
     }
 
+    public function singlePost($id)
+    {
+        $post=Post::find($id);
+       return Inertia::render('single-post',[
+        'singlePost'=>$post
+       ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +49,7 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+
     }
 
     /**
@@ -50,9 +58,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post=Post::all();
+       return Inertia::render('single-post',[
+        'singlePost'=>$post
+       ]);
     }
 
     /**

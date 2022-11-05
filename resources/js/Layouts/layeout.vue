@@ -43,6 +43,9 @@ li{
 }
 .nav-bg{
     background-color: var(--borderColor);
+    margin-top:0;
+   position: relative;
+
 }
 .secondary-color{
     color: var(--secondaryColor);

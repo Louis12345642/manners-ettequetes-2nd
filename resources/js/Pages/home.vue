@@ -49,7 +49,12 @@ return{
     </section>
 <FeaturedPost :posts='posts'/>
 <AllPostsHeader/>
-<post/>
+
+<section   class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10">
+    <post  v-for="post in posts.slice(6)" :key="post.id" :post='post'/>
+
+</section>
+
 
  </layeout>
 </template>

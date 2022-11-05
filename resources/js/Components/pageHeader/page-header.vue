@@ -8,9 +8,9 @@ export default{
 }
 </script>
 <template>
-  <nav class="nav-bg w-full h-22 border-b-slate-100">
+  <nav class="nav-bg w-full h-22  border-b-slate-100 ">
       <section class="container">
-        <div class="flex justify-between">
+        <div class="flex justify-between ">
 
             <h1>
               <Link href="/"><h1 class="text-lg font-bold font-mono md:text-xl lg:text-2xl">

@@ -9,7 +9,7 @@
       class="card-bg card-border rounded-xl text-center py-16 px-10 mt-16 mx-8 mb-10 shadow-md hover:bg-gray-100"
     >
       <img
-        src="logo.jpg"
+        src="/logo.jpg"
         alt=""
         class="mx-auto rounded-full logo-border"
       />
@@ -22,7 +22,7 @@
             <div class="lg:py-3 lg:px-5 flex items-center">
               <label for="email" class="hidden lg:inline-block">
                 <img
-                  src="mailbox-icon.svg"
+                  src="/mailbox-icon.svg"
                   alt="mailbox letter"
                 />
               </label>

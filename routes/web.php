@@ -73,3 +73,4 @@ use Inertia\Inertia;
 route::get('/',[PostController::class,'index']);
 route::get('/about',[AboutusController::class,'index']);
 route::get('/contact',[ContactUsController::class,'index']);
+route::get('/posts/{id}',[PostController::class,'singlePost']);

@@ -1,7 +1,12 @@
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3'
 export default{
+    components:{
+Link
+    },
    props:['posts'],
+
     setup(props){
 const FeaturedPost=props.posts
 
@@ -70,13 +75,11 @@ return{
                     />
                   </div>
                   <div class="p-4 mt-6">
-                    <a href="/post.html"
-                      ><button
-                        class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
-                      >
-                        read more
-                      </button></a
-                    >
+                    <Link href="/posts/1"> <button
+                    class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
+                  >
+                    read more
+                  </button></Link>
                   </div>
                 </section>
               </article>
@@ -239,11 +242,11 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                  <button
+                 <Link href="/posts/2"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
-                  </button>
+                  </button></Link>
                 </div>
               </section>
             </article>
@@ -301,11 +304,12 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                  <button
+                    <Link href="/posts/3"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
-                  </button>
+                  </button></Link>
+
                 </div>
               </section>
             </article>
