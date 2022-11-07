@@ -111,14 +111,17 @@ return{
               />
             </div>
 
+           <Link href="posts/3">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                Lorem ipsum dolor sit amet.
+                {{FeaturedPost[3].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{FeaturedPost[3].created_at}}</time>
               </p>
             </article>
+        </Link>
+
           </section>
 
           <hr class="m-8" />
@@ -134,15 +137,16 @@ return{
                 alt=""
               />
             </div>
-
+            <Link href="posts/4">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                Lorem ipsum dolor sit amet.
+                {{FeaturedPost[4].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{FeaturedPost[4].created_at}}</time>
               </p>
             </article>
+            </Link>
           </section>
           <hr class="m-8" />
           <section
@@ -158,14 +162,16 @@ return{
               />
             </div>
 
+            <Link href="posts/5">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                Lorem ipsum dolor sit amet.
+                {{FeaturedPost[5].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{FeaturedPost[5].created_at}}</time>
               </p>
             </article>
+            </Link>
           </section>
           <hr class="m-8" />
           <section
@@ -180,15 +186,16 @@ return{
                 alt=""
               />
             </div>
-
+            <Link href="posts/6">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                Lorem ipsum dolor sit amet.
+                {{FeaturedPost[6].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{FeaturedPost[6].created_at}}</time>
               </p>
             </article>
+            </Link>
           </section>
         </section>
         <!-- this is a card section -->

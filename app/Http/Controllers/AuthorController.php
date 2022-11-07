@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
-use App\Models\Post;
+use App\Models\Author;
+use App\Http\Requests\StoreAuthorRequest;
+use App\Http\Requests\UpdateAuthorRequest;
 use Inertia\Inertia;
 
-class CategoryController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -33,10 +32,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param  \App\Http\Requests\StoreAuthorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(StoreAuthorRequest $request)
     {
         //
     }
@@ -44,25 +43,29 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Author $author)
     {
-         $posts=$category->posts;
+        // $posts=$category->posts;
 
-        return Inertia::render('categories',[
+        // return Inertia::render('categories',[
+        //     'posts'=>$posts
+        //    ]);
+        $posts=$author->posts;
+        return Inertia::render('authors',[
             'posts'=>$posts
-           ]);
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Author $author)
     {
         //
     }
@@ -70,11 +73,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Http\Requests\UpdateAuthorRequest  $request
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateAuthorRequest $request, Author $author)
     {
         //
     }
@@ -82,10 +85,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Author $author)
     {
         //
     }

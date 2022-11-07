@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
@@ -74,3 +77,7 @@ route::get('/',[PostController::class,'index']);
 route::get('/about',[AboutusController::class,'index']);
 route::get('/contact',[ContactUsController::class,'index']);
 route::get('/posts/{id}',[PostController::class,'singlePost']);
+// get all the post by one category
+route::get('/posts/categories/{category}',[CategoryController::class,'show']);
+// get the posts by the user
+route::get('posts/author/{author}',[AuthorController::class,'show']);

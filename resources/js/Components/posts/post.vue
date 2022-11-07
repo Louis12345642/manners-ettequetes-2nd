@@ -36,7 +36,7 @@ return{
             <div class="m-2">
               <img
                 class="rounded-lg card-border"
-                src="djengo.jpg"
+                src="/djengo.jpg"
                 alt=""
               />
             </div>
