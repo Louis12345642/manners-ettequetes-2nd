@@ -9,10 +9,14 @@ export default{
     props:['post'],
     setup(props){
 const post= props.post
-const postRoute=ref('posts/'+post.id)
+const postRoute=ref('/posts/'+post.id)
+const categoryRoute=ref('/posts/categories/'+post.id)
+const authorRoute=ref('/posts/author/'+post.id)
 return{
     post,
-    postRoute
+    postRoute,
+    categoryRoute,
+    authorRoute
 }
     }
 }
@@ -42,11 +46,13 @@ return{
             </div>
             <!-- card header,excert and title text dev -->
             <div>
-              <button
+              <Link :href="categoryRoute">
+                <button
                 class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
               >
-                home
+             {{post.category.name}}
               </button>
+            </Link>
             </div>
             <div class="p-5">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
@@ -60,11 +66,12 @@ return{
               </p>
               <section class="flex justify-between">
                 <div class="flex gap-3">
-                  <p
+               <Link :href="authorRoute">
+                <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{post.author}}
-                  </p>
+                  {{post.author.name}}
+                  </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
                     src="atomic-2.jpg"

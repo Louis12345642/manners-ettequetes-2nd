@@ -1,6 +1,7 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
+import { ref } from '@vue/reactivity'
 export default{
     components:{
 Link
@@ -9,9 +10,14 @@ Link
 
     setup(props){
 const FeaturedPost=props.posts
+const categoryRoute=ref('/posts/categories/'+FeaturedPost[  1].id)
+const authorRoute=ref('/posts/author/'+FeaturedPost[1].id)
 
 return{
-    FeaturedPost
+    FeaturedPost,
+    categoryRoute,
+    authorRoute
+
 }
 
     }
@@ -45,11 +51,13 @@ return{
 
               <article class="p-5 lg:m-4 lg:p-5">
                 <div>
-                  <button
-                    class="my-4 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
-                  >
-                    home
-                  </button>
+                    <Link :href="categoryRoute">
+                <button
+                class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
+              >
+                home
+              </button>
+              </Link>
                 </div>
 
                 <h1 class="mb-4 font-mono font-semibold text-2xl">
@@ -63,11 +71,13 @@ return{
                 </p>
                 <section class="flex justify-between">
                   <div class="flex gap-3">
-                    <p
-                      class="mt-10 align-bottom font-sans font-semibold text-gray-500"
-                    >
-                    {{FeaturedPost[0].author}}
-                    </p>
+                    <Link :href="authorRoute">
+                <p
+                    class="mt-10 align-bottom font-sans font-semibold text-gray-500"
+                  >
+                  {{FeaturedPost[0].author.name}}
+                  </p>
+                </Link>
                     <img
                       class="mt-7 w-12 h-12 rounded-full round-border"
                       src="atomic-2.jpg"
@@ -215,11 +225,13 @@ return{
             </section>
             <!-- card header,excert and title text dev -->
             <section>
-              <button
+                <Link :href="categoryRoute">
+                <button
                 class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
               >
                 home
               </button>
+              </Link>
             </section>
 
             <article class="p-5">
@@ -236,11 +248,12 @@ return{
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                  <p
+                    <Link :href="authorRoute">
+                <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{FeaturedPost[1].author}}
-                  </p>
+                  {{FeaturedPost[1].author.name}}
+                  </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
                     src="atomic-2.jpg"
@@ -277,11 +290,13 @@ return{
             </section>
             <!-- card header,excert and title text dev -->
             <section>
-              <button
+                <Link :href="categoryRoute">
+                <button
                 class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
               >
                 home
               </button>
+              </Link>
             </section>
 
             <article class="p-5">
@@ -298,11 +313,12 @@ return{
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                  <p
+                    <Link :href="authorRoute">
+                <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
                   {{FeaturedPost[2].author}}
-                  </p>
+                  </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
                     src="atomic-2.jpg"

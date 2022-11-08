@@ -12,7 +12,7 @@ import post from '../Components/posts/post.vue'
 export default{
   components: { Layeout, FeaturedPost, AllPostsHeader ,post},
   props:{
-    posts:String
+    posts:Array
   },
     setup(props){
 
@@ -48,7 +48,7 @@ return{
       </div>
     </section>
 <FeaturedPost :posts='posts'/>
-<AllPostsHeader/>
+<!-- <AllPostsHeader :author=""/> -->
 
 <section   class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10">
     <post  v-for="post in posts.slice(6)" :key="post.id" :post='post'/>

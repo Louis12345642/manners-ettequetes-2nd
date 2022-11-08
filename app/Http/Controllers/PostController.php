@@ -16,19 +16,20 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with(['category','author'])->get();
         // return inertia('Posts/home',compact('posts'));
         return Inertia::render('home',[
             'posts'=>$posts
         ]);
     }
 
-    public function singlePost($id)
+    public function singlePost( $post)
     {
-        $post=Post::find($id);
+        $post=Post::find($post);
        return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);
+
     }
 
     /**
@@ -58,9 +59,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $post)
     {
-        $post=Post::all();
+        $post=Post::find($post);
        return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);

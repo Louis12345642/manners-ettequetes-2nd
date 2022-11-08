@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PostController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -73,11 +74,20 @@ use Inertia\Inertia;
 // });
 // require __DIR__.'/auth.php';
 
-route::get('/',[PostController::class,'index']);
-route::get('/about',[AboutusController::class,'index']);
-route::get('/contact',[ContactUsController::class,'index']);
-route::get('/posts/{id}',[PostController::class,'singlePost']);
+route::get('/', [PostController::class, 'index']);
+route::get('/about', [AboutusController::class, 'index']);
+route::get('/contact', [ContactUsController::class, 'index']);
+route::get('/posts/{post}', [PostController::class, 'show']);
 // get all the post by one category
-route::get('/posts/categories/{category}',[CategoryController::class,'show']);
+route::get('/posts/categories/{category}', [CategoryController::class, 'show']);
 // get the posts by the user
-route::get('posts/author/{author}',[AuthorController::class,'show']);
+route::get('posts/author/{author}', function (User $author) {
+
+    $posts = $author->posts;
+
+    return Inertia::render('author', [
+        'posts' => $posts,
+        'author'=>$author
+
+    ]);
+});
