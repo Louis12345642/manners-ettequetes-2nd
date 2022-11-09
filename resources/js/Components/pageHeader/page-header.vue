@@ -8,19 +8,18 @@ export default{
 }
 </script>
 <template>
-  <nav class="nav-bg w-full h-22  border-b-slate-100 ">
+  <nav class="nav-bg w-full h-22  border-b-slate-200 ">
       <section class="container">
-        <div class="flex justify-between ">
+        <div class="flex justify-between lg:mx-0 ">
 
             <h1>
               <Link href="/"><h1 class="text-lg font-bold font-mono md:text-xl lg:text-2xl">
                 <span class="secondary-color">Manners</span> & Ettequetes
               </h1></Link>
-              </h1
-            >
+              </h1>
 
           <ul
-            class="hidden lg:flex lg:gap-10 font-sans open sans font-semibold"
+            class="hidden lg:flex lg:gap-10 font-sans open sans font-semibold "
           >
             <li>
               <Link href="/signup" class="text-xs font-bold uppercase"

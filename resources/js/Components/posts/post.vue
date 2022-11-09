@@ -9,14 +9,16 @@ export default{
     props:['post'],
     setup(props){
 const post= props.post
-const postRoute=ref('/posts/'+post.id)
-const categoryRoute=ref('/posts/categories/'+post.id)
-const authorRoute=ref('/posts/author/'+post.id)
+const postRoute=ref('/posts/'+post.slug)
+const categoryRoute=ref('/posts/categories/'+post.category.slug)
+const authorRoute=ref('/posts/author/'+post.author.name)
+
 return{
     post,
     postRoute,
     categoryRoute,
-    authorRoute
+    authorRoute,
+
 }
     }
 }
@@ -46,15 +48,16 @@ return{
             </div>
             <!-- card header,excert and title text dev -->
             <div>
-              <Link :href="categoryRoute">
-                <button
-                class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
-              >
-             {{post.category.name}}
-              </button>
-            </Link>
+
+                <div class="space-x-2 ml-5 mt-1">
+                    <Link :href="categoryRoute"
+                        class="px-6 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{post.category.title}}</Link>
+
+                </div>
+
             </div>
-            <div class="p-5">
+            <div class="px-5 py-2 ">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
                {{post.title}}
               </h1>

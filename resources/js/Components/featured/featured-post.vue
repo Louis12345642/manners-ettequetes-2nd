@@ -10,13 +10,41 @@ Link
 
     setup(props){
 const FeaturedPost=props.posts
-const categoryRoute=ref('/posts/categories/'+FeaturedPost[  1].id)
-const authorRoute=ref('/posts/author/'+FeaturedPost[1].id)
+const categoryRouteOne=ref('/posts/categories/'+FeaturedPost[0].category.slug)
+const categoryRouteTwo=ref('/posts/categories/'+FeaturedPost[1].category.slug)
+const categoryRoute3=ref('/posts/categories/'+FeaturedPost[2].category.slug)
+const authorRoute1=ref('/posts/author/'+FeaturedPost[0].author.name)
+const authorRoute2=ref('/posts/author/'+FeaturedPost[1].author.name)
+const authorRoute3=ref('/posts/author/'+FeaturedPost[2].author.name)
+const postRoute1=ref('/posts/'+FeaturedPost[3].slug)
+const postRoute2=ref('/posts/'+FeaturedPost[4].slug)
+const postRoute3=ref('/posts/'+FeaturedPost[6].slug)
+const postRoute4=ref('/posts/'+FeaturedPost[7].slug)
+
+const post1=ref('/posts/'+FeaturedPost[0].slug)
+const post2=ref('/posts/'+FeaturedPost[2].slug)
+const post3=ref('/posts/'+FeaturedPost[3].slug)
+
+
+
 
 return{
     FeaturedPost,
-    categoryRoute,
-    authorRoute
+    categoryRouteOne,
+    categoryRouteTwo,
+    categoryRoute3,
+    authorRoute1,
+    authorRoute2,
+    authorRoute3,
+
+    postRoute1,
+ postRoute2,
+ postRoute3,
+ postRoute4,
+
+  post1,
+ post2,
+ post3,
 
 }
 
@@ -43,7 +71,7 @@ return{
               <div class="m-2 lg:inner-card lg:gap-2">
                 <img
                   class="rounded-lg card-border lg:w-50 lg:lg:h-60 lg:rounded-xl lg:m-5 md:w-50 md:h-60 md:m-5"
-                  src="side1.jpg"
+                  src="djengo.jpg"
                   alt=""
                 />
               </div>
@@ -51,16 +79,17 @@ return{
 
               <article class="p-5 lg:m-4 lg:p-5">
                 <div>
-                    <Link :href="categoryRoute">
-                <button
-                class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
-              >
-                home
-              </button>
-              </Link>
+
+                        <div class="space-x-2 ml-5">
+                    <Link :href="categoryRouteOne"
+                        class="px-3 py-1 my-4 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{FeaturedPost[0].category.title }}</Link>
+
                 </div>
 
-                <h1 class="mb-4 font-mono font-semibold text-2xl">
+                </div>
+
+                <h1 class="mb-4 mt-4 font-mono font-semibold text-2xl">
                 {{FeaturedPost[0].title}}
                 </h1>
                 <p class="text-gray-900 leading-7 text-md">
@@ -71,7 +100,7 @@ return{
                 </p>
                 <section class="flex justify-between">
                   <div class="flex gap-3">
-                    <Link :href="authorRoute">
+                    <Link :href="authorRoute1">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
@@ -85,7 +114,7 @@ return{
                     />
                   </div>
                   <div class="p-4 mt-6">
-                    <Link href="/posts/1"> <button
+                    <Link :href="post1"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
@@ -116,12 +145,13 @@ return{
             <div class="m-2">
               <img
                 class="rounded-lg card-border"
-                src="vinicius-amnx-amano-qckXUZefhoU-unsplash.jpg"
+                src="side2.jpg"
                 alt=""
               />
             </div>
 
-           <Link href="posts/3">
+
+           <Link :href="postRoute1">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
                 {{FeaturedPost[3].title}}
@@ -147,7 +177,7 @@ return{
                 alt=""
               />
             </div>
-            <Link href="posts/4">
+            <Link :href="postRoute2">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
                 {{FeaturedPost[4].title}}
@@ -167,12 +197,12 @@ return{
             <div class="m-2">
               <img
                 class="rounded-lg card-border"
-                src="tech.jpg"
+                src="logo.jpg"
                 alt=""
               />
             </div>
 
-            <Link href="posts/5">
+            <Link :href="postRoute3">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
                 {{FeaturedPost[5].title}}
@@ -196,7 +226,7 @@ return{
                 alt=""
               />
             </div>
-            <Link href="posts/6">
+            <Link :href="postRoute4">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
                 {{FeaturedPost[6].title}}
@@ -225,13 +255,14 @@ return{
             </section>
             <!-- card header,excert and title text dev -->
             <section>
-                <Link :href="categoryRoute">
-                <button
-                class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
-              >
-                home
-              </button>
-              </Link>
+
+                    <div class="space-x-2 ml-5">
+                    <Link :href="categoryRouteTwo"
+                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{FeaturedPost[1].category.title }}</Link>
+
+                </div>
+
             </section>
 
             <article class="p-5">
@@ -248,7 +279,7 @@ return{
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                    <Link :href="authorRoute">
+                    <Link :href="authorRoute2">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
@@ -262,7 +293,7 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                 <Link href="/posts/2"> <button
+                 <Link :href="post2"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
@@ -290,13 +321,14 @@ return{
             </section>
             <!-- card header,excert and title text dev -->
             <section>
-                <Link :href="categoryRoute">
-                <button
-                class="ml-5 text-sm text-red-500 font-semibold rounded-full border border-purple-200 w-20 h-6"
-              >
-                home
-              </button>
-              </Link>
+
+                    <div class="space-x-2 ml-5">
+                    <Link :href="categoryRoute3"
+                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{FeaturedPost[2].category.title }}</Link>
+
+                </div>
+
             </section>
 
             <article class="p-5">
@@ -313,11 +345,11 @@ return{
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                    <Link :href="authorRoute">
+                    <Link :href="authorRoute3">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{FeaturedPost[2].author}}
+                  {{FeaturedPost[2].author.name}}
                   </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
@@ -327,7 +359,7 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                    <Link href="/posts/3"> <button
+                    <Link :href="post3"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more

@@ -47,12 +47,17 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(category $category)
     {
+        // $posts=$category->with('posts')->find($category);
         $posts=$category->posts;
+        $posts->load('author');
+
 
         return Inertia::render('categories',[
-            'posts'=>$posts
+            'posts'=>$posts,
+            'category'=>$category
+
            ]);
     }
 

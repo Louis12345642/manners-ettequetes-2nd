@@ -2,10 +2,20 @@
 <script>
 import layeout from '@/Layouts/layeout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
+import { ref } from 'vue'
 export default{
   components: { layeout ,Link},
 props:{
     singlePost:Array
+},
+setup(props){
+    const singlePost=props.singlePost
+    const authorRoute=ref('author/'+singlePost.author.id)
+    const categoryRoute=ref('categories/'+singlePost.category.id)
+    return{
+        authorRoute,
+        categoryRoute
+    }
 }
 }
 </script>
@@ -25,7 +35,7 @@ props:{
             <div class="flex items-center lg:justify-center text-sm mt-4">
                 <img class="mt-7 w-16 h-16 rounded-full round-border" src="/logo.jpg" alt="">
                 <div class="ml-5 text-left mt-5">
-                    <h5 class="font-bold">   {{singlePost.author}}</h5>
+                 <Link :href="authorRoute">   <h5 class="font-bold">   {{singlePost.author.name}}</h5></Link>
                     <h6>Manners and Ettiquetes</h6>
                 </div>
             </div>
@@ -48,12 +58,13 @@ props:{
                     Back to Posts
                 </Link>
 
+              <Link :href="categoryRoute">
                 <div class="space-x-2">
                     <a href="#"
                         class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{  }}</a>
+                        style="font-size: 10px">{{singlePost.category.title }}</a>
 
-                </div>
+                </div></Link>
             </div>
 
             <h1 class="font-bold text-3xl lg:text-4xl mb-10">
@@ -63,9 +74,7 @@ props:{
 
             <div class="space-y-4 lg:text-lg leading-loose space-x-2">
                <p>   {{singlePost.body}}</p>
-               <p>   {{singlePost.body}}</p>
-               <p>   {{singlePost.body}}</p>
-               <p>   {{singlePost.body}}</p>
+
             </div>
         </div>
     </article>

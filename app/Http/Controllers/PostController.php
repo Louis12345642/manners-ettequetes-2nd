@@ -25,7 +25,7 @@ class PostController extends Controller
 
     public function singlePost( $post)
     {
-        $post=Post::find($post);
+        $post=Post::with(['category','author'])->get();
        return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);
@@ -59,10 +59,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show( $post)
+    public function show( Post $post)
     {
-        $post=Post::find($post);
-       return Inertia::render('single-post',[
+        $post->load(['category','author']);
+        return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);
     }

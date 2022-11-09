@@ -54,6 +54,8 @@ class AuthorController extends Controller
         //     'posts'=>$posts
         //    ]);
         $posts=$author->posts;
+        $posts->load('category');
+
         return Inertia::render('authors',[
             'posts'=>$posts
         ]);

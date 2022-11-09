@@ -67,6 +67,9 @@ li{
     background-color: #E0E0E0;
     width:100px
 }
+.category-drop{
+    border-radius: 20px;
+}
 p{
     font-family: Open Sans, sans-serif;
 }
