@@ -10,8 +10,8 @@ props:{
 },
 setup(props){
     const singlePost=props.singlePost
-    const authorRoute=ref('author/'+singlePost.author.id)
-    const categoryRoute=ref('categories/'+singlePost.category.id)
+    const authorRoute=ref('/author/'+singlePost.author.username)
+    const categoryRoute=ref('/categories/'+singlePost.category.slug)
     return{
         authorRoute,
         categoryRoute
@@ -58,13 +58,13 @@ setup(props){
                     Back to Posts
                 </Link>
 
-              <Link :href="categoryRoute">
-                <div class="space-x-2">
-                    <a href="#"
-                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{singlePost.category.title }}</a>
 
-                </div></Link>
+                <div class="space-x-2">
+                    <Link :href="categoryRoute"
+                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{singlePost.category.title }}</Link>
+
+                </div>
             </div>
 
             <h1 class="font-bold text-3xl lg:text-4xl mb-10">

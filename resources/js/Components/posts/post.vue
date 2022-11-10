@@ -11,7 +11,7 @@ export default{
 const post= props.post
 const postRoute=ref('/posts/'+post.slug)
 const categoryRoute=ref('/posts/categories/'+post.category.slug)
-const authorRoute=ref('/posts/author/'+post.author.name)
+const authorRoute=ref('/posts/author/'+post.author.username)
 
 return{
     post,
@@ -62,7 +62,7 @@ return{
                {{post.title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                {{post.body}}
+                {{post.excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
                 Published <time>{{post.created_at}}</time>

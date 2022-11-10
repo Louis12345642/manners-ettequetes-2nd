@@ -51,7 +51,7 @@ class CategoryController extends Controller
     {
         // $posts=$category->with('posts')->find($category);
         $posts=$category->posts;
-        $posts->load('author');
+        $posts->load(['author','category']);
 
 
         return Inertia::render('categories',[

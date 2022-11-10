@@ -44,7 +44,7 @@ return{
 
 <section   class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10">
     <!-- <post  v-for="post in posts" :key="post.id" :post='post'/> -->
-    <category-post v-for="post in posts" :key="post.id" :post="post" :category="category"/>
+    <category-post v-for="post in posts" :key="post.id" :post="post" />
 </section>
 
 

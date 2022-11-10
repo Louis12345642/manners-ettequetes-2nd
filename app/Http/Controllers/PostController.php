@@ -16,21 +16,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category','author'])->get();
+        $posts = Post::with(['category','author'])->latest()->get();
+
+
         // return inertia('Posts/home',compact('posts'));
         return Inertia::render('home',[
             'posts'=>$posts
         ]);
     }
 
-    public function singlePost( $post)
-    {
-        $post=Post::with(['category','author'])->get();
-       return Inertia::render('single-post',[
-        'singlePost'=>$post
-       ]);
-
-    }
 
     /**
      * Show the form for creating a new resource.

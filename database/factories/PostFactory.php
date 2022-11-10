@@ -20,14 +20,15 @@ class PostFactory extends Factory
     public function definition()
     {
         $title=fake()->sentence();
+        $body=fake()->text();
         return [
             'title' => $title,
             'slug' => Str::slug($title),
             'category_id'=>Category::factory(),
             'user_id'=>User::factory(),
-            'excert' => fake()->sentence(),
+            'excert' => str::excerpt($body),
             'author' => fake()->name(),
-            'body' => fake()->sentence(),
+            'body' => $body
 
 
         ];

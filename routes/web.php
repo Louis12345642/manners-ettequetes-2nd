@@ -77,15 +77,15 @@ route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('/posts/categories/{category:slug}', [CategoryController::class, 'show']);
 // get the posts by the user
-route::get('posts/author/{author:name}', function (User $author) {
+route::get('posts/author/{author:username}', function (User $author) {
 
     $posts = $author->posts;
-    $posts->load('category');
-
+    $posts->load(['category','author']);
 
     return Inertia::render('author', [
         'posts' => $posts,
-        'author'=>$author,
+        'author'=>$author
+
 
 
     ]);

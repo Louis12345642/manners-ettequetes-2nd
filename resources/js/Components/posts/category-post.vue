@@ -9,17 +9,17 @@ export default{
     props:['post','category'],
     setup(props){
 const post= props.post
-const category=props.category
-const postRoute=ref('/posts/'+post.id)
-const categoryRoute=ref('/posts/categories/'+category.slug)
-const authorRoute=ref('/posts/author/'+post.author.name)
+
+const postRoute=ref('/posts/'+post.slug)
+const categoryRoute=ref('/posts/categories/'+post.category.slug)
+const authorRoute=ref('/posts/author/'+post.author.username)
 
 return{
     post,
     postRoute,
     categoryRoute,
     authorRoute,
-    category
+
 
 }
     }
@@ -54,7 +54,7 @@ return{
                 <div class="space-x-2 ml-5">
                     <Link :href="categoryRoute"
                         class="px-6 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                style="font-size: 10px">{{category.title}}</Link>
+                style="font-size: 10px">{{post.category.title}}</Link>
 
                 </div>
 

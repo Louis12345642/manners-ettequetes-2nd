@@ -6,20 +6,20 @@ export default{
         Link
 
     },
-    props:['post','author'],
+    props:['post'],
     setup(props){
 const post= props.post
-const author=props.author
+// const author=props.author
 const postRoute=ref('/posts/'+post.slug)
 const categoryRoute=ref('/posts/categories/'+post.category.slug)
-const authorRoute=ref('/posts/author/'+author.name)
+const authorRoute=ref('/posts/author/'+post.author.username)
 
 return{
     post,
     postRoute,
     categoryRoute,
     authorRoute,
-    author
+
 
 }
     }
@@ -75,7 +75,7 @@ return{
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{author.name}}
+                  {{post.author.name}}
                   </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
