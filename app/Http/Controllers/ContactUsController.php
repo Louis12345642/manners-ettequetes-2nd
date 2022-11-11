@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\ContactUs;
 use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\UpdateContactUsRequest;
+use App\Models\User;
 use Inertia\Inertia;
+use PhpParser\Builder\Use_;
 
 class ContactUsController extends Controller
 {
@@ -16,7 +18,6 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-  return Inertia::render('contact');
     }
 
     /**
@@ -26,7 +27,7 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('contact');
     }
 
     /**
@@ -37,7 +38,13 @@ class ContactUsController extends Controller
      */
     public function store(StoreContactUsRequest $request)
     {
-        //
+    $validatedData = $request->validate([
+            'name' => ['required','max:255'],
+            'email' => ['required'],
+            'message' => ['required'],
+        ]);
+
+   ContactUs::create($validatedData);
     }
 
     /**

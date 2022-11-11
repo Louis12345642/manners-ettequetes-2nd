@@ -1,7 +1,5 @@
 <script setup>
-defineProps({
-  author:{}
-})
+const props=defineProps(['title']);
 </script>
 <template>
     <section>
@@ -10,8 +8,8 @@ defineProps({
           class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
         >
 
-          <span class="secondary-color">Manners and Ettequettes</span> old bblog
-          articles
+          <span class="secondary-color">Manners and Ettequettes</span> {{props.title}}
+
         </h2>
         <div class="flex gap-6 justify-center">
           <p class="mt-10 align-bottom font-sans font-semibold text-gray-500">

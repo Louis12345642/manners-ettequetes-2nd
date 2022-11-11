@@ -1,11 +1,25 @@
-<script>
+<script setup>
 import layeout from '@/Layouts/layeout.vue'
-export default{
-  components: { layeout },
+import { reactive, ReactiveEffect } from 'vue';
+import {Inertia} from '@inertiajs/inertia';
+
+let contactData = reactive({
+ name:'',
+ email:'',
+ message:''
+}
+);
+
+function submitData(){
+    Inertia.post('/contact-us',contactData)
+    contactData.email=''
+    contactData.name=''
+    contactData.message=''
 
 }
 </script>
 <template>
+
 <layeout>
     <section>
       <div>
@@ -39,14 +53,14 @@ export default{
                   alt="mailbox letter"
                 /> -->
                 <h1 class="text-lg font-sans font-bold mt-3 text-center uppercase mb-3"> contact us</h1>
-               <form class="p-5 py-3" action="">
-                <label class="block my-3 font-mono font-bold" for="">Email</label>
-                <input class="block my-3 input-width card-border rounded-md bg-slate-100 h-8" type="email">
+               <form @submit.prevent="submitData" class="p-5 py-3">
                 <label class="block my-3 font-mono font-bold" for="">Name</label>
-                <input class="block my-3 input-width card-border rounded-md bg-slate-100 h-8" type="text">
+                <input v-model="contactData.name" name="name" class="block my-3 input-width-c card-border rounded-md bg-slate-100 h-8" type="text" placeholder="enter name ..">
+                <label class="block my-3 font-mono font-bold" for="">Email</label>
+                <input v-model="contactData.email" name="email" class="block my-3 input-width-c card-border rounded-md bg-slate-100 h-8" type="email" placeholder="Enter email..">
                 <label class="font-sans font-bold" for="">Message</label>
-                <textarea class="block my-3 input-width bg-gray-100 card-border rounded-md active:border-purple-500" name="" ></textarea>
-                <button class="mt-4 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-500 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 w-36">summit</button>
+                <textarea v-model="contactData.message" name="message" class="block my-3 input-width-c bg-gray-100 card-border rounded-md active:border-purple-500" placeholder="message here .."  ></textarea>
+                <button type="submit" class="mt-4 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-500 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 w-36">summit</button>
                </form>
         </div>
 

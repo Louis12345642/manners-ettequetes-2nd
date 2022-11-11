@@ -90,7 +90,7 @@ return{
       </div> -->
     </section>
 <FeaturedPost :posts='posts'/>
-<AllPostsHeader/>
+<AllPostsHeader title="old-posts" />
 
 
 <section   class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10">

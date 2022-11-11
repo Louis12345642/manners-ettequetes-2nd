@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
@@ -72,11 +73,18 @@ use Inertia\Inertia;
 
 route::get('/', [PostController::class, 'index']);
 route::get('/about', [AboutusController::class, 'index']);
-route::get('/contact', [ContactUsController::class, 'index']);
+route::get('/contact', [ContactUsController::class, 'create']);
+route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('/posts/categories/{category:slug}', [CategoryController::class, 'show']);
+
+
+// the admin section
+route::get('/dashboard',[DasboardController::class,'index']);
 // get the posts by the user
+
+
 route::get('posts/author/{author:username}', function (User $author) {
 
     $posts = $author->posts;

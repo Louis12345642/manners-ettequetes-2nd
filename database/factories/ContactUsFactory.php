@@ -16,8 +16,13 @@ class ContactUsFactory extends Factory
      */
     public function definition()
     {
+        $name=fake()->name();
+        $message=fake()->text();
         return [
-            //
+            'name' => $name,
+            'email' => fake()->unique()->safeEmail(),
+            'message' =>$message,
+
         ];
     }
 }

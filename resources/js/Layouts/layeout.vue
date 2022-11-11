@@ -85,6 +85,15 @@ p{
     width: 10px;
 }
 .input-width{
+    width:100%;
+}
+.input-width-c{
     width:300px;
+}
+.max-heigth{
+    max-height: 530px;
+}
+.title-width{
+    width:100%;
 }
 </style>
