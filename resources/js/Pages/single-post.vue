@@ -3,6 +3,7 @@
 import layeout from '@/Layouts/layeout.vue'
 import { Link } from '@inertiajs/inertia-vue3'
 import { ref } from 'vue'
+import moment from 'moment'
 export default{
   components: { layeout ,Link},
 props:{
@@ -13,6 +14,7 @@ setup(props){
     const authorRoute=ref('/author/'+singlePost.author.username)
     const categoryRoute=ref('/categories/'+singlePost.category.slug)
     return{
+        moment,
         authorRoute,
         categoryRoute
     }
@@ -29,7 +31,7 @@ setup(props){
             <img src="/atomic.jpg" alt="" class="rounded-xl">
 
             <p class="mt-4 block text-gray-400 text-xs">
-                Published <time>{{singlePost.created_at}}</time>
+                Published <time>{{moment(singlePost.created_at).startOf('hour').fromNow()}} </time>
             </p>
 
             <div class="flex items-center lg:justify-center text-sm mt-4">

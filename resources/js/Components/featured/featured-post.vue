@@ -2,6 +2,7 @@
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
 import { ref } from '@vue/reactivity'
+import moment from 'moment'
 export default{
     components:{
 Link
@@ -45,6 +46,7 @@ return{
   post1,
  post2,
  post3,
+ moment
 
 }
 
@@ -96,7 +98,7 @@ return{
                     {{FeaturedPost[0].excert}}
                 </p>
                 <p class="mt-2 block text-gray-400 text-xs">
-                  Published <time>1 day ago</time>
+                  Published <time>{{moment(FeaturedPost[0].created_at).startOf('hour').fromNow()}} </time>
                 </p>
                 <section class="flex justify-between">
                   <div class="flex gap-3">
@@ -157,7 +159,7 @@ return{
                 {{FeaturedPost[3].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{FeaturedPost[3].created_at}}</time>
+                Published <time>{{moment(FeaturedPost[3].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
         </Link>
@@ -183,7 +185,7 @@ return{
                 {{FeaturedPost[4].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{FeaturedPost[4].created_at}}</time>
+                Published <time>{{moment(FeaturedPost[4].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -208,7 +210,7 @@ return{
                 {{FeaturedPost[5].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{FeaturedPost[5].created_at}}</time>
+                Published <time>{{moment(FeaturedPost[5].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -232,7 +234,7 @@ return{
                 {{FeaturedPost[6].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{FeaturedPost[6].created_at}}</time>
+                Published <time>{{moment(FeaturedPost[6].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -273,7 +275,7 @@ return{
                 {{FeaturedPost[1].excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{moment(FeaturedPost[1].created_at).startOf('hour').fromNow()}} </time>
               </p>
               <!-- this is user and image and  name -->
               <section class="flex justify-between">
@@ -339,7 +341,7 @@ return{
                 {{FeaturedPost[2].excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>1 day ago</time>
+                Published <time>{{moment(FeaturedPost[2].created_at).startOf('hour').fromNow()}} </time>
               </p>
               <!-- this is user and image and  name -->
               <section class="flex justify-between">

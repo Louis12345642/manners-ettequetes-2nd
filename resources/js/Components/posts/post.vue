@@ -1,19 +1,22 @@
 <script>
 import { Link } from '@inertiajs/inertia-vue3'
 import { ref } from '@vue/reactivity'
+import moment from 'moment'
+
 export default{
     components:{
-        Link
+        Link,
 
     },
     props:['post'],
     setup(props){
 const post= props.post
 const postRoute=ref('/posts/'+post.slug)
-const categoryRoute=ref('/posts/categories/'+post.category.slug)
-const authorRoute=ref('/posts/author/'+post.author.username)
+const categoryRoute=ref('/categories/'+post.category.slug)
+const authorRoute=ref('/author/'+post.author.username)
 
 return{
+  moment,
     post,
     postRoute,
     categoryRoute,
@@ -65,7 +68,7 @@ return{
                 {{post.excert}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{post.created_at}}</time>
+                Published <time>{{moment(post.created_at).startOf('hour').fromNow()}} </time>
               </p>
               <section class="flex justify-between">
                 <div class="flex gap-3">
