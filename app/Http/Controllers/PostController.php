@@ -16,12 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category','author'])->latest()->get();
+        $featuredPosts = Post::with(['category','author'])->latest()->take(8)->get();
+        // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
+        $posts= Post::with(['category','author'])->filter(request(['search']))->get();
+        // dd($posts);
 
 
         // return inertia('Posts/home',compact('posts'));
         return Inertia::render('home',[
-            'posts'=>$posts
+            'posts'=>$posts,
+            'featuredPosts'=>$featuredPosts
         ]);
     }
 

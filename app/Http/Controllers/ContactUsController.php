@@ -45,6 +45,7 @@ class ContactUsController extends Controller
         ]);
 
    ContactUs::create($validatedData);
+   return redirect('/contact')->with('message', 'Your account has been created.');
     }
 
     /**

@@ -17,6 +17,7 @@ function submitData(){
     contactData.message=''
 
 }
+
 </script>
 <template>
 
@@ -46,6 +47,19 @@ function submitData(){
 
 
     <section>
+
+        <div v-if="$page.props.flash.message" class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-emerald-500">
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="fa fa-bell"></i>
+  </span>
+  <span class="inline-block align-middle mr-8">
+    <b class="capitalize">thank you</b>    {{$page.props.flash.message}}
+  </span>
+  <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onclick="closeAlert(event)">
+    <span>×</span>
+
+  </button>
+</div>
 
         <div class=" p-5 my-4  card-bg card-border rounded-lg shadow-md h-70 hover:bg-gray-200 block">
             <!-- <img class="mx-auto mb-2"

@@ -78,8 +78,6 @@ route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
-
-
 // the admin section
 route::get('/dashboard',[DasboardController::class,'index']);
 // get the posts by the user
