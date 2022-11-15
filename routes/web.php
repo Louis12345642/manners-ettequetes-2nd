@@ -24,14 +24,14 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
@@ -69,9 +69,9 @@ use Inertia\Inertia;
 //     return Inertia::render('bosco');
 // });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
 
-route::get('/', [PostController::class, 'index']);
+// route::get('/', [PostController::class, 'index']);
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
 route::post('/contact-us', [ContactUsController::class, 'store']);
@@ -79,7 +79,7 @@ route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 // the admin section
-route::get('/dashboard',[DasboardController::class,'index']);
+route::get('/dashboard',[DasboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');;
 // get the posts by the user
 
 

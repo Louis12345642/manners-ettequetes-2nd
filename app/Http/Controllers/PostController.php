@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 class PostController extends Controller
@@ -25,7 +26,9 @@ class PostController extends Controller
         // return inertia('Posts/home',compact('posts'));
         return Inertia::render('home',[
             'posts'=>$posts,
-            'featuredPosts'=>$featuredPosts
+            'featuredPosts'=>$featuredPosts,
+            'canLogin' => Route::has('login'),
+         'canRegister' => Route::has('register'),
         ]);
     }
 
