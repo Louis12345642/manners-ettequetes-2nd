@@ -28,8 +28,20 @@ class PostController extends Controller
             'posts'=>$posts,
             'featuredPosts'=>$featuredPosts,
             'canLogin' => Route::has('login'),
-         'canRegister' => Route::has('register'),
+            'canRegister' => Route::has('register'),
+
+            // Route::get('/', function () {
+            //     return Inertia::render('Welcome', [
+            //         'canLogin' => Route::has('login'),
+            //         'canRegister' => Route::has('register'),
+            //         'laravelVersion' => Application::VERSION,
+            //         'phpVersion' => PHP_VERSION,
+            //     ]);
+            // });
+
         ]);
+
+        require __DIR__.'/auth.php';
     }
 
 

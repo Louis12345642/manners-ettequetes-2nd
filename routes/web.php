@@ -25,11 +25,18 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    $featuredPosts = Post::with(['category','author'])->latest()->take(8)->get();
+    // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
+    $posts= Post::with(['category','author'])->filter(request(['search']))->get();
+    // dd($posts);
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'posts'=>$posts,
+        'featuredPosts'=>$featuredPosts,
     ]);
 });
 
@@ -79,7 +86,7 @@ route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 // the admin section
-route::get('/dashboard',[DasboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');;
+route::get('/dashboard',[DasboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 // get the posts by the user
 
 

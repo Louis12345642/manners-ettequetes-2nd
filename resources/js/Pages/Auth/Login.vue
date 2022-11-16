@@ -5,6 +5,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/build-in-components/TextInput.vue';
+import layeout from '../../Layouts/layeout.vue'
+import allpageheader from '../../Components/hero-section/all-posts-header.vue'
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 defineProps({
@@ -26,13 +28,15 @@ const submit = () => {
 </script>
 
 <template>
+ <layeout>
+    <!-- <allpageheader title="login"/> -->
     <GuestLayout>
+        <h1 class="font-bold text-lg text-center mt-3">Login here</h1>
         <Head title="Log in" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
@@ -64,4 +68,6 @@ const submit = () => {
             </div>
         </form>
     </GuestLayout>
+ </layeout>
+
 </template>

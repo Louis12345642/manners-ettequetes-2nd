@@ -3,11 +3,24 @@ import pageHeader from '../Components/pageHeader/page-header.vue'
 import Footer from '../Components/footer/footer.vue'
 export default{
   components: { pageHeader, Footer },
+ props:{
+    canLogin: Boolean,
+    canRegister: Boolean,
+ },
+ setup(props){
+    const canLogin=props.canLogin
+    const canRegister=props.canRegister
+    return{
+        canLogin,
+        canRegister
+    }
+
+ }
 
 }
 </script>
 <template>
-<page-header/>
+<page-header :canLogin="canLogin" :canRegister="canRegister"/>
 <slot/>
 <Footer/>
 </template>

@@ -14,7 +14,9 @@ export default{
   components: { Layeout, FeaturedPost, AllPostsHeader ,post,DropdownVue},
   props:{
     featuredPosts:Array,
-    posts:Array
+    posts:Array,
+    canLogin: Boolean,
+    canRegister: Boolean,
   },
     setup(props){
 

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
+
         @routes
         @vite('resources/js/app.js')
         @inertiaHead
@@ -33,6 +34,13 @@ function closeAlert(event){
             }
             element.parentNode.parentNode.removeChild(element.parentNode);
           }
+
+
+          function menuToggle(){
+            const toggleMenu = document.querySelector('.menu');
+            toggleMenu.classList.toggle('active')
+        }
          </script>
+
     </body>
 </html>
