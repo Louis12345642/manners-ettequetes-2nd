@@ -13,7 +13,7 @@ class Comment extends Model
         return $this->belongsTo(Post::class,'post_id');
     }
 
-    public function user(){
+    public function Author(){
         return $this->belongsTo(User::class,'user_id');
     }
 }

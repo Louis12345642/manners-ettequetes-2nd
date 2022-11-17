@@ -65,6 +65,7 @@ class PostController extends Controller
     public function show( Post $post)
     {
         $post->load(['category','author','comment']);
+        // $post=$post;
         return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);

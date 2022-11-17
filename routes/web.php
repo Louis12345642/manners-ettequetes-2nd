@@ -18,7 +18,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     $featuredPosts = Post::with(['category','author'])->latest()->take(8)->get();
     // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
-    $posts= Post::with(['category','author'])->filter(request(['search']))->get();
+    $posts= Post::with(['category','author','comment'])->filter(request(['search']))->get();
     // dd($posts);
 
     return Inertia::render('Welcome', [
