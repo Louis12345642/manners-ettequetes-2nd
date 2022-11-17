@@ -31,5 +31,9 @@ public function scopeFilter($query, array $filters)
         )
     );
 }
+public function comment(){
+    return $this->hasMany(Comment::class);
+
+}
 
 }

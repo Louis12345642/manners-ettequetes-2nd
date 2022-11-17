@@ -30,18 +30,8 @@ class PostController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
 
-            // Route::get('/', function () {
-            //     return Inertia::render('Welcome', [
-            //         'canLogin' => Route::has('login'),
-            //         'canRegister' => Route::has('register'),
-            //         'laravelVersion' => Application::VERSION,
-            //         'phpVersion' => PHP_VERSION,
-            //     ]);
-            // });
-
         ]);
 
-        require __DIR__.'/auth.php';
     }
 
 
@@ -74,7 +64,7 @@ class PostController extends Controller
      */
     public function show( Post $post)
     {
-        $post->load(['category','author']);
+        $post->load(['category','author','comment']);
         return Inertia::render('single-post',[
         'singlePost'=>$post
        ]);

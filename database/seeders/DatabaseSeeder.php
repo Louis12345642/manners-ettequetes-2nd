@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Comment;
 use App\Models\ContactUs;
 use App\Models\Post;
 use App\Models\User;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         Post::factory(10)->create();
         User::factory(10)->create();
+        Comment::factory(5)->create();
         ContactUs::factory(10)->create();
     }
 }

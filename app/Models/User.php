@@ -53,6 +53,10 @@ class User extends Authenticatable
     }
     public function getRouteKeyName()
     {
-        return 'usersname';
+        return 'name';
+    }
+
+    public function comment(){
+        return $this->hasMany(comment::class);
     }
 }
