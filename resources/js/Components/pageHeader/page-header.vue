@@ -73,7 +73,7 @@ export default{
             <li>
                 <div v-if="$page.props.auth.user" class="action card-border ml-4">
         <div class="profile" onclick="menuToggle();">
-            <img src="/atomic-2.jpg" alt="">
+            <img src="https://i.pravatar.cc/60" alt="">
         </div>
 
            <div  class="menu">
