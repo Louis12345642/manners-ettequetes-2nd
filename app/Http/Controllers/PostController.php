@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         $featuredPosts = Post::with(['category','author'])->latest()->take(8)->get();
         // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
-        $posts= Post::with(['category','author'])->filter(request(['search']))->get();
+        $posts= Post::filter(request(['search']))->get();
         // dd($posts);
 
 
@@ -33,7 +33,6 @@ class PostController extends Controller
         ]);
 
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +54,6 @@ class PostController extends Controller
     {
 
     }
-
     /**
      * Display the specified resource.
      *
@@ -64,10 +62,13 @@ class PostController extends Controller
      */
     public function show( Post $post)
     {
-        $post->load(['category','author','comment']);
+        $post->load(['category','author','comment',]);
+        $author=$post->comment('Author');
+        // dd($author);
         // $post=$post;
         return Inertia::render('single-post',[
-        'singlePost'=>$post
+        'singlePost'=>$post,
+        'Commentauthor'=>$author
        ]);
     }
 

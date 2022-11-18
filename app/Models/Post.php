@@ -32,8 +32,14 @@ public function scopeFilter($query, array $filters)
     );
 }
 public function comment(){
-    return $this->hasMany(Comment::class);
+    return $this->hasMany(Comment::class,'user_id');
 
 }
+
+public function commentAuthor(){
+    return $this->belongsTo(User::class);
+
+}
+
 
 }

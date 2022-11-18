@@ -5,8 +5,9 @@ import { Link } from '@inertiajs/inertia-vue3'
 import { ref } from 'vue'
 import moment from 'moment'
 import comment from '../Components/comment/comment.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 export default{
-  components: { layeout ,Link,comment},
+  components: { layeout ,Link,comment,PrimaryButton},
 props:{
     singlePost:Array
 },
@@ -81,7 +82,38 @@ setup(props){
             </div>
         </div>
     </article>
+    <form class="m-auto  " method="POST" >
 
+
+<header class="flex items-center">
+    <img src="https://i.pravatar.cc/60?"
+         alt=""
+         width="40"
+         height="40"
+         class="rounded-full">
+
+    <h2 class="ml-4">Want to participate?</h2>
+</header>
+
+<div class="mt-6">
+    <textarea
+        name="body"
+        class="w-full text-sm focus:outline-none focus:rounded-lg rounded-lg"
+        rows="5"
+        placeholder="Quick, thing of something to say!"
+        required></textarea>
+
+
+        <span class="text-xs text-red-500"></span>
+
+</div>
+
+<div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
+    <PrimaryButton class="ml-4" >
+     submit
+    </PrimaryButton>
+</div>
+</form>
     <comment v-for="comment in singlePost.comment"  :comment="comment" :name="singlePost.author.name" :key="comment.id"/>
 
 </main>
