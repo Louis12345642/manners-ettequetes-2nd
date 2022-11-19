@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DasboardController;
+use App\Http\Controllers\postCommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
@@ -44,6 +45,11 @@ route::get('/posts/{post:slug}', [PostController::class, 'show']);
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 // the admin section
 route::get('/dashboard',[DasboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// comment route
+
+// comment route
+route::post('/posts/{post:slug}/comment',[PostController::class,'storeComment'])->middleware(['auth', 'verified']);
 
 
 // get the posts by the user

@@ -6,6 +6,8 @@ import { ref } from 'vue'
 import moment from 'moment'
 import comment from '../Components/comment/comment.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import {Inertia} from '@inertiajs/inertia';
+import { reactive, ReactiveEffect } from 'vue';
 export default{
   components: { layeout ,Link,comment,PrimaryButton},
 props:{
@@ -15,10 +17,25 @@ setup(props){
     const singlePost=props.singlePost
     const authorRoute=ref('/author/'+singlePost.author.username)
     const categoryRoute=ref('/categories/'+singlePost.category.slug)
+
+
+let commentData=reactive({
+    body:''
+});
+
+let comentUrl='/posts/'+singlePost.slug+'/comment';
+console.log(comentUrl)
+
+     function submitComment(){
+        Inertia.post(comentUrl,commentData);
+     }
     return{
         moment,
+        submitComment,
         authorRoute,
-        categoryRoute
+        categoryRoute,
+        commentData,
+        comentUrl
     }
 }
 }
@@ -80,10 +97,8 @@ setup(props){
                <p>   {{singlePost.body}}</p>
 
             </div>
-        </div>
-    </article>
-    <form class="m-auto  " method="POST" >
-
+            <div class=" mt-10 'border border-gray-200 p-6 rounded-xl">
+    <form  class="m-auto" @submit.prevent="submitComment" >
 
 <header class="flex items-center">
     <img src="https://i.pravatar.cc/60?"
@@ -96,7 +111,7 @@ setup(props){
 </header>
 
 <div class="mt-6">
-    <textarea
+    <textarea v-model="commentData.body"
         name="body"
         class="w-full text-sm focus:outline-none focus:rounded-lg rounded-lg"
         rows="5"
@@ -108,13 +123,18 @@ setup(props){
 
 </div>
 
-<div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
+<div class="flex mb-6 justify-end mt-6 pt-6 border-t border-gray-200">
     <PrimaryButton class="ml-4" >
      submit
     </PrimaryButton>
 </div>
 </form>
-    <comment v-for="comment in singlePost.comment"  :comment="comment" :name="singlePost.author.name" :key="comment.id"/>
+<comment v-for="comment in singlePost.comment"  :comment="comment"  :key="comment.id"/>
+  </div>
+    </div>
+
+    </article>
+
 
 </main>
  </layeout>

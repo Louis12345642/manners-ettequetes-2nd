@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Author;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -50,10 +52,24 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function storeComment(Post $post)
     {
+        $id=Auth::id();
 
+Comment::create([
+    'user_id'=>$id,
+    'post_id'=>$post->id,
+    'body'=>request('body')
+]);
+
+
+return back();
     }
+
+
+
+
+    // }
     /**
      * Display the specified resource.
      *
@@ -62,13 +78,13 @@ class PostController extends Controller
      */
     public function show( Post $post)
     {
-        $post->load(['category','author','comment',]);
-        $author=$post->comment('Author');
+        $post->load(['category','author','comment.CommentAuthor',]);
+        // $author=$post->load(['comment.author']);
         // dd($author);
         // $post=$post;
         return Inertia::render('single-post',[
         'singlePost'=>$post,
-        'Commentauthor'=>$author
+
        ]);
     }
 
@@ -80,7 +96,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
     }
 
     /**
