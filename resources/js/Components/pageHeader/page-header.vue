@@ -28,17 +28,6 @@ export default{
 </script>
 <template>
 
-
-<!--
-<div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
-
-            <template v-else>
-                <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</Link>
-
-                <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</Link>
-            </template>
-        </div> -->
   <nav class=" fixed nav-bg w-full h-22   border-b-slate-200 ">
       <section class="container ">
         <div  class=" flex justify-between lg:mx-0 ">
@@ -120,7 +109,8 @@ export default{
                 <Link v-else  class="  ml-4 text-xs font-bold uppercase">home</Link>
 
                 <a
-                  href="#"
+                  href="#newLetter"
+
                   class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 ml-3 mr-6 rounded-full text-xs font-semibold text-white uppercase py-3 px-5"
                   >Subscribe for Updates</a
                 >
@@ -139,6 +129,10 @@ export default{
 
 </template>
 <style>
+
+html{
+    scroll-behavior: smooth;
+}
 
 .icons-size{
     color: #333;

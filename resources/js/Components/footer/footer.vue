@@ -1,5 +1,14 @@
-<script>
+<script setup>
+import { reactive, ReactiveEffect } from "vue";
+import { Inertia } from "@inertiajs/inertia";
 
+let emailData=reactive({
+    email:''
+});
+
+const submitEmail=()=>{
+Inertia.get('/newsletter',emailData)
+}
 
 </script>
 <template>
@@ -18,7 +27,7 @@
 
       <div class="mt-10">
         <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
-          <form method="POST" action="#" class="lg:flex text-sm">
+          <form  @submit.prevent="submitEmail"  class="lg:flex text-sm">
             <div class="lg:py-3 lg:px-5 flex items-center">
               <label for="email" class="hidden lg:inline-block">
                 <img
@@ -28,7 +37,9 @@
               </label>
 
               <input
+              v-model="emailData.email"
                 id="email"
+                name="email"
                 type="text"
                 placeholder="Your email address"
                 class="lg:bg-transparent pl-4 focus-within:outline-none card-border h-4"
@@ -36,7 +47,9 @@
             </div>
 
             <button
+            id="newLetter"
               type="submit"
+
               class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase h-10 py-3 px-8"
             >
               Subscribe

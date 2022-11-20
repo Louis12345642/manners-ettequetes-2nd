@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -19,21 +20,20 @@ class PostController extends Controller
      */
     public function index()
     {
-        $featuredPosts = Post::with(['category','author'])->latest()->take(8)->get();
+        $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
         // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
-        $posts= Post::filter(request(['search']))->get();
+        $posts = Post::filter(request(['search']))->get();
         // dd($posts);
 
 
         // return inertia('Posts/home',compact('posts'));
-        return Inertia::render('home',[
-            'posts'=>$posts,
-            'featuredPosts'=>$featuredPosts,
+        return Inertia::render('home', [
+            'posts' => $posts,
+            'featuredPosts' => $featuredPosts,
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
 
         ]);
-
     }
 
     /**
@@ -54,19 +54,23 @@ class PostController extends Controller
      */
     public function storeComment(Post $post)
     {
-        $id=Auth::id();
 
-Comment::create([
-    'user_id'=>$id,
-    'post_id'=>$post->id,
-    'body'=>request('body')
-]);
+        request()->validate([
+            'body' => ['required', 'max:225'],
+        ]);
 
+        $id = Auth::id();
+        $commentData = [
+            'user_id' => $id,
+            'post_id' => $post->id,
+            'body' => request('body')
 
-return back();
+        ];
+
+        Comment::create($commentData);
+
+        return back();
     }
-
-
 
 
     // }
@@ -76,16 +80,14 @@ return back();
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show( Post $post)
+    public function show(Post $post)
     {
-        $post->load(['category','author','comment.CommentAuthor',]);
-        // $author=$post->load(['comment.author']);
-        // dd($author);
-        // $post=$post;
-        return Inertia::render('single-post',[
-        'singlePost'=>$post,
+        $post->load(['category', 'author', 'comment.CommentAuthor',]);
 
-       ]);
+        return Inertia::render('single-post', [
+            'singlePost' => $post,
+
+        ]);
     }
 
     /**
@@ -96,7 +98,6 @@ return back();
      */
     public function edit(Post $post)
     {
-
     }
 
     /**

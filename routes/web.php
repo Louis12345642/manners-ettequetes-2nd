@@ -36,6 +36,39 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
+route::get('/newsletter',function(){
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+    $mailchimp->setConfig([
+	'apiKey' => config('services.mailchimp.key'),
+	'server' => 'us17'
+]);
+
+$list_id = "c4fb834966";
+
+request()->validate([
+    'email' => ['required'],
+]);
+
+
+
+    try {
+        $response = $mailchimp->lists->addListMember($list_id, [
+            "email_address" => request('email'),
+            "status" => "subscribed",
+
+        ]);
+
+        return redirect('/')->with('message', 'you have suceesfully subcribed');
+
+    } catch (\Exception $e) {
+        $e->getMessage();
+         return redirect('/')->with('Errormessage','This email could not be added to subcrition list');
+
+    }
+
+
+});
+
 // route::get('/', [PostController::class, 'index']);
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
