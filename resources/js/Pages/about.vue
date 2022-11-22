@@ -1,10 +1,14 @@
-<script>
+<script setup>
 import layeout from '../Layouts/layeout.vue'
-export default{
-    components: { layeout }
-}
-
-
+import contactCard from '../Components/about-page/contact-card.vue'
+import { ref } from 'vue';
+defineProps({
+About:String
+})
+const contactCardData=ref([{
+  email:'mannersandettiquete@me.com',
+  contact:'+211921-000-267'
+}]);
 </script>
 
 <template>
@@ -33,23 +37,7 @@ More about us
   <main>
     <section class="container">
         <section class=" lg:mx-auto lg:flex  lg:justify-center md:mx-auto md:flex  md:justify-center">
-            <div class=" w-72 h-44 p-5 m-5  card-bg card-border rounded-lg shadow-md hover:bg-slate-200">
-                <h1 class="text-sm font-sans font-bold mt-3 text-center uppercase mb-3"> Email</h1>
-                <img class="mx-auto mb-2"
-                      src="mailbox-icon.svg"
-                      alt="mailbox letter"
-                    />
-                    <h1 class="text-sm text-center font-sans font-medium mt-3 text-gray-500 ">manners@ettiquetes.com</h1>
-            </div>
-            <div class=" p-5 m-5  card-bg card-border rounded-lg shadow-md h-44 w-72 hover:bg-gray-200">
-                <h1 class="text-sm font-sans font-bold mt-3 text-center uppercase mb-3"> Contact</h1>
-                <img class="mx-auto mb-2"
-                      src="mailbox-icon.svg"
-                      alt="mailbox letter"
-                    />
-
-                    <h1 class="text-sm font-sans font-medium mt-3 text-center text-gray-500"> +211921-000-267 </h1>
-            </div>
+<contactCard :contactData="contactCardData"/>
         </section>
     </section>
   </main>
@@ -89,27 +77,12 @@ More about us
           </div>
 
           <h1 class="font-bold text-3xl lg:text-4xl mb-10">
-              This is a big title and it will look great on two or even three
+        Read more about us manner and ettiquetes
 
           </h1>
 
           <div class="space-y-4 lg:text-lg leading-loose space-x-2">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur.</p>
-
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium,
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
-                  vitae
-                  dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                  fugit.</p>
-
-
-
+              <p v-for="Aboutdata in About"  :key="Aboutdata.id" >{{Aboutdata.content}}</p>
           </div>
       </div>
   </article>

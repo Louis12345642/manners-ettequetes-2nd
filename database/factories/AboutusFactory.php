@@ -17,7 +17,7 @@ class AboutusFactory extends Factory
     public function definition()
     {
         return [
-            //
+      'content'=>fake()->text()
         ];
     }
 }

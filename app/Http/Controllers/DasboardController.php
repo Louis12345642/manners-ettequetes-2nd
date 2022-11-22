@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dasboard;
 use App\Http\Requests\StoreDasboardRequest;
 use App\Http\Requests\UpdateDasboardRequest;
+use App\Models\Post;
 use Inertia\Inertia;
 
 class DasboardController extends Controller
@@ -14,9 +15,12 @@ class DasboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post)
     {
-       return Inertia::render('admin/dasbord');
+        $posts=$post->load('category')->get();
+       return Inertia::render('admin/dasbord',[
+'posts'=>$posts
+       ]);
     }
 
     /**

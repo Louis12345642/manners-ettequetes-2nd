@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Aboutus;
 use App\Models\Comment;
 use App\Models\ContactUs;
 use App\Models\Post;
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
         Comment::factory(2)->create();
         ContactUs::factory(2)->create();
+        Aboutus::factory(1)->create();
     }
 }

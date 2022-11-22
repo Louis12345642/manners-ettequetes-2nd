@@ -33,6 +33,10 @@ return [
 
     'mailchimp'=>[
         'key'=>env('MAILCHIMP_KEY'),
+    ],
+
+    'subcriber'=>[
+        'key'=>env('SUBCRIBER'),
     ]
 
 ];
