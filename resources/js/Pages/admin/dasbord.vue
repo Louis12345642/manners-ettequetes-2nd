@@ -26,7 +26,6 @@ defineProps({
 
                       <post v-for="post in posts" :key="post.id" :post="post" />
 
-
                     <hr class="m-8" />
                 </section>
             </section>
@@ -34,10 +33,7 @@ defineProps({
                 <div
                     class="p-5 my-4 card-bg card-border rounded-lg shadow-md h-70 hover:bg-gray-200 block"
                 >
-                    <!-- <img class="mx-auto mb-2"
-                  src="/assets/icons/mailbox-icon.svg"
-                  alt="mailbox letter"
-                /> -->
+
                     <h1
                         class="text-lg font-sans font-bold mt-3 text-center uppercase mb-3"
                     >
@@ -62,16 +58,8 @@ defineProps({
                         id="countries"
                         class="bg-gray-100 border border-gray-300 text-black font-semibold text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     >
-                        <option selected>Choose a category</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
-                        <option selected>Choose a category</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
+                        <option v-for="post in posts" :key="post.id" selected>{{post.category.title}}</option>
+
                     </select>
 
                     <label class="block my-3 font-mono font-bold" for=""
