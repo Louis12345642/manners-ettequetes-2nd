@@ -18,11 +18,8 @@ class ContactUsController extends Controller
      */
     public function index(ContactUs $contactUs)
     {
-   $contacts=[
-    'name'=>'kual',
-    'messag'=>'hello'
-   ];
-   Inertia::render('contactMessages',[
+   $contacts=$contactUs->all();
+  return  Inertia::render('messages',[
     'messages'=>$contacts
    ]);
 

@@ -45,7 +45,7 @@ route::get('/newsletter', [NewsletterController::class, 'store']);
 // route::get('/', [PostController::class, 'index']);
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
-route::get('messages',[ContactUsController::class,'index']);
+route::get('/messages',[ContactUsController::class,'index']);
 route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
