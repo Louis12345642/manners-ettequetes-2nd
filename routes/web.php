@@ -21,8 +21,11 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
-    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->get();
+    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(5);
+    $paginatedPosts=response()->json([$posts]);
+
     // dd($posts);
+    // dd($paginatedPosts);
 
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

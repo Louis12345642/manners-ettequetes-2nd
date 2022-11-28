@@ -70,12 +70,8 @@ defineProps({
                         class="block my-3 input-width card-border rounded-md bg-slate-100 h-8"
                         type="text"
                     ></textarea>
-                    <!--
-                <label class="font-sans font-bold" for="">Body</label>
-                <textarea name="message" class="block my-3 input-width bg-gray-100 card-border rounded-md active:border-purple-500"  ></textarea>
 
-                <button type="submit" class="mt-4 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-500 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 w-36">summit</button> -->
-                    <!-- </form> -->
+
                 </div>
                 <form>
                     <div

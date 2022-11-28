@@ -5,9 +5,10 @@ import AllPostsHeader from "../Components/hero-section/all-posts-header.vue";
 import FeaturedPost from "../Components/featured/featured-post.vue";
 import post from "../Components/posts/post.vue";
 import DropdownVue from "@/Components/build-in-components/Dropdown.vue";
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
-    components: { Layeout, FeaturedPost, AllPostsHeader, post, DropdownVue },
+    components: { Layeout, FeaturedPost, AllPostsHeader, post, DropdownVue ,Link},
     props: {
         featuredPosts: Array,
         posts: Array,
@@ -153,8 +154,30 @@ export default {
         <section
             class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10"
         >
-            <post v-for="post in posts" :key="post.id" :post="post" />
+            <post v-for="post in posts.data" :key="post.id" :post="post" />
         </section>
+
+
+
+
+
+    <section  class="ml-10">
+  <ul class="inline-flex items-center -space-x-px">
+
+    <li v-for="link in posts.links" :key="link.id">
+      <Link :href="link.url" v-html="link.label" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700"></Link>
+    </li>
+
+
+
+  </ul>
+    </section>
+
+
+
+
+
+
     </layeout>
 </template>
 <style></style>

@@ -185,9 +185,9 @@ html{
     height: 20px;
     position: absolute;
     right: 30px;
-    transform:rotate(45deg);
-    top:-5px;
-    width: 20px;
+    /* transform:rotate(45deg); */
+    /* top:-5px; */
+    /* width: 20px; */
 }
 .action .menu h3{
     color: #555;
