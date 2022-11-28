@@ -16,8 +16,16 @@ class ContactUsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ContactUs $contactUs)
     {
+   $contacts=[
+    'name'=>'kual',
+    'messag'=>'hello'
+   ];
+   Inertia::render('contactMessages',[
+    'messages'=>$contacts
+   ]);
+
     }
 
     /**

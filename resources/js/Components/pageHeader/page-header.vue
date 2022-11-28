@@ -94,9 +94,16 @@ export default{
                 >Contact</Link
               >
             </li>
+
             <li>
+              <Link href="/messages" class="text-xs font-bold uppercase"
+                >Contact messages</Link>
+
+            </li>
 
 
+
+            <li>
             <Link href="/about"   class="text-xs font-bold uppercase">About</Link>
 
 
