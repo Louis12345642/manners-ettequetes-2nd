@@ -96,7 +96,7 @@ export default{
             </li>
 
             <li>
-              <Link href="/messages" class="text-xs font-bold uppercase"
+              <Link v-if="$page.props.auth.user" href="/messages" class="text-xs font-bold uppercase"
                 >Contact messages</Link>
 
             </li>

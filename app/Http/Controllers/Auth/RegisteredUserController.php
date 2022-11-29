@@ -11,9 +11,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use Psy\Util\str;
+
+// $username = Str::snake(request()->name);
 
 class RegisteredUserController extends Controller
 {
+
+
     /**
      * Display the registration view.
      *
@@ -31,17 +36,28 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
+     *
+     *
      */
+
+
+
     public function store(Request $request)
     {
+
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
+
         ]);
+
 
         $user = User::create([
             'name' => $request->name,
+            // 'username' => $username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

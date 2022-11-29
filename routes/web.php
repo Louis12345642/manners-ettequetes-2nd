@@ -21,7 +21,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
-    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(5);
+    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(6);
     $paginatedPosts=response()->json([$posts]);
 
     // dd($posts);
@@ -45,7 +45,7 @@ route::get('/newsletter', [NewsletterController::class, 'store']);
 // route::get('/', [PostController::class, 'index']);
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
-route::get('/messages',[ContactUsController::class,'index']);
+route::get('/messages',[ContactUsController::class,'index'])->middleware(['auth', 'verified']);
 route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category

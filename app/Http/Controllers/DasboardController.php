@@ -17,7 +17,7 @@ class DasboardController extends Controller
      */
     public function index(Post $post)
     {
-        $posts=$post->with('Category')->get();
+        $posts=$post->with(['category','author'])->get();
        return Inertia::render('admin/dasbord',[
 'posts'=>$posts
        ]);
