@@ -53,6 +53,10 @@ route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 // the admin section
 route::get('/dashboard', [DasboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+//get a create post form
+
+route::get('/Dashboard/create',[PostController::class,'create'])->name('create');
+
 // comment route
 route::post('/posts/{post:slug}/comment', [PostController::class, 'storeComment'])->middleware(['auth', 'verified']);
 

@@ -12,7 +12,7 @@ defineProps({
         <thead class="text-xs text-gray-700 uppercase bg-gray-100 ">
             <tr>
                 <th scope="col" class="py-3 px-6">
-                    Product name
+                   post title
                 </th>
                 <!-- <th scope="col" class="py-3 px-6">
                     Color
