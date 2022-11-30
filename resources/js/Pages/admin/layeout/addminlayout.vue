@@ -2,6 +2,8 @@
 import layeoutVue from "@/Layouts/layeout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import allPostsHeaderVue from "@/Components/hero-section/all-posts-header.vue";
+import SelectMenu from "@/Components/selectMenu.vue";
+import categorySelect from "../../../Components/categorySelect.vue"
 defineProps({
     posts: Array,
 });
@@ -94,21 +96,17 @@ defineProps({
 
                 </div>
                 <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
-           <span><img class="w-6 h-6" src="/categories.png" alt=""></span><span> <Link
-                        v-if="$page.props.auth.user"
-                        :href="route('dashboard')"
-                        class="text-xs font-bold uppercase"
-                        >categories</Link
-                    ></span>
+           <span><img class="w-6 h-6" src="/categories.png" alt=""></span><span   class="text-xs font-bold uppercase">
+
+<!-- <SelectMenu title="categories" :posts="posts"/> -->
+<categorySelect title="categories" :posts="posts"/>
+                    </span>
 
                 </div>
                 <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
-           <span><img class="w-6 h-6" src="/man.png" alt=""></span><span> <Link
-                        v-if="$page.props.auth.user"
-                        :href="route('dashboard')"
-                        class="text-xs font-bold uppercase"
-                        >users</Link
-                    ></span>
+           <span><img class="w-6 h-6" src="/man.png" alt=""></span><span>
+            <SelectMenu title="users" :posts="posts"/>
+                    </span>
 
                 </div>
                 <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
