@@ -5,19 +5,21 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 import addminlayout from "../layeout/addminlayout.vue";
 import Table from "./components/Table.vue";
+// import route from "vendor/tightenco/ziggy/src/js";
 defineProps({
-    categories: Array,
+    users: Array,
 });
 </script>
 
 <template>
     <addminlayout>
-        <div  class="flex justify-end px-25 py-2">
+
+      <div  class="flex justify-end px-25 py-2">
         <PrimaryButton class="ml-4" >
-                  <Link :href="route('categories.create')">  create category</Link>
+                  <Link :href="route('register')">  create user</Link>
                 </PrimaryButton>
       </div>
-        <Table :categories="categories" />
+        <Table :users="users" />
     </addminlayout>
 </template>
 <style>

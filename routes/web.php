@@ -9,6 +9,7 @@ use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\postCommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\usersController;
 use App\Models\Post;
 use App\Models\User;
 use App\services\Newsletter;
@@ -46,22 +47,14 @@ route::get('/blog', [PostController::class,'index']);
 
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
-route::get('/messages',[ContactUsController::class,'index'])->middleware(['auth', 'verified']);
+
 route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
-// the admin section
-
-route::get('/dashboard', [DasboardController::class, 'index'])
-->middleware(
-    ['auth', 'verified']
-    )->name('dashboard');
 
 
-//get a create post form
 
-route::get('/Dashboard/create',[PostController::class,'create'])->name('create');
 
 // comment route
 route::post('/posts/{post:slug}/comment', [PostController::class, 'storeComment'])->middleware(['auth', 'verified']);
@@ -92,5 +85,54 @@ Route::controller(CategoryController::class)->group(function () {
     // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
 });
 });
+
+Route::prefix('admin')->group(function () {
+    // Admin users routes
+    Route::controller(usersController::class)->group(function () {
+        Route::get('/users', 'index')->name('users');
+
+        // Route::get('/categories/create', 'create')->name('categories.create');
+        // Route::post('/categories', 'store')->name('categories.store');
+        // Route::get('/categories/{category}', 'edit')->name('categories.edit');
+        // Route::put('/categories/{category}', 'update')->name('categories.update');
+        // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+    });
+    });
+
+
+
+    Route::prefix('admin')->group(function () {
+        // Admin posts routes
+        Route::controller(DasboardController::class)->group(function () {
+            Route::get('/posts', 'index')->name('dashboard');
+            route::get('/create',[PostController::class,'create'])->name('create');
+            // Route::get('/categories/create', 'create')->name('categories.create');
+            // Route::post('/categories', 'store')->name('categories.store');
+            // Route::get('/categories/{category}', 'edit')->name('categories.edit');
+            // Route::put('/categories/{category}', 'update')->name('categories.update');
+            // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+        });
+        });
+
+
+
+//         route::get('/dashboard', [DasboardController::class, 'index'])
+// ->middleware(
+//     ['auth', 'verified']
+//     )->name('dashboard');
+
+Route::prefix('admin')->group(function () {
+    // Admin posts routes
+    Route::controller(ContactUsController::class)->group(function () {
+        route::get('/messages',[ContactUsController::class,'index'])->name('messages');
+        // route::get('/create',[PostController::class,'create'])->name('create');
+        // Route::get('/categories/create', 'create')->name('categories.create');
+        // Route::post('/categories', 'store')->name('categories.store');
+        // Route::get('/categories/{category}', 'edit')->name('categories.edit');
+        // Route::put('/categories/{category}', 'update')->name('categories.update');
+        // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+    });
+    });
+
 
 

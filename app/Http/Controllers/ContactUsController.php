@@ -21,7 +21,7 @@ class ContactUsController extends Controller
     {
    $contacts=$contactUs->all();
    $posts=Post::with(['category','author'])->get();
-  return  Inertia::render('messages',[
+  return  Inertia::render('admin/messages/messages',[
     'messages'=>$contacts,
     'posts'=>$posts
    ]);

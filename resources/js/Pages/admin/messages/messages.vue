@@ -1,5 +1,5 @@
 <script setup>
-import addminlayout from './admin/layeout/addminlayout.vue'
+import addminlayout from '../layeout/addminlayout.vue'
 defineProps({
     messages:Array,
     posts:Array

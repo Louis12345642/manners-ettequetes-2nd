@@ -34,7 +34,7 @@ class PostController extends Controller
     public function create(Post $post)
     {
         $posts=$post->with(['category','author'])->get();
-     return Inertia::render('admin/createPost',[
+     return Inertia::render('admin/posts/createPost',[
 'posts'=>$posts
      ]);
     }

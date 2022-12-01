@@ -63,7 +63,7 @@ defineProps({
                 </div>
 
                 <div>
-                    <span><img class="w-6 h-6" src="/dashboard.png" alt=""></span>
+                    <span><img class="w-10 h-10" src="/user.png" alt=""></span>
                 </div>
             </section>
         </nav>
@@ -110,15 +110,18 @@ defineProps({
                 </div>
                 <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
            <span><img class="w-6 h-6" src="/man.png" alt=""></span><span>
-            <SelectMenu title="users" :posts="posts"/>
+            <Link
+                        :href="route('users')"
+                        class="text-xs font-bold uppercase"
+                        >users</Link>
                     </span>
 
                 </div>
                 <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
            <span><img class="w-6 h-6" src="/dashboard.png" alt=""></span><span> <Link
-                        :href="route('create')"
+                        :href="route('messages')"
                         class="text-xs font-bold uppercase"
-                        >create posts</Link
+                        >messages</Link
                     ></span>
 
                 </div>
