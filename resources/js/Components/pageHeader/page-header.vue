@@ -39,9 +39,9 @@ export default{
               </h1>
 
           <ul
-            class="hidden lg:flex lg:gap-10 font-sans open sans font-semibold "
+            class="hidden lg:flex lg:gap-5 font-sans open sans font-semibold "
           >
-            <li>
+            <!-- <li>
               <Link v-if="$page.props.auth.user" href="/register" class=" hidden text-xs font-bold uppercase"
                 >sign up</Link
               >
@@ -49,6 +49,11 @@ export default{
                 >sign up</Link
               >
 
+
+            </li> -->
+            <li>
+              <Link  href="/blog" class="text-xs font-bold uppercase"
+                >blog post</Link>
 
             </li>
             <li>
@@ -59,8 +64,9 @@ export default{
                 >sign in</Link
               >
             </li>
+
             <li>
-                <div v-if="$page.props.auth.user" class="action card-border ml-4">
+                <div v-if="$page.props.auth.user" class="action card-border ml-2">
         <div class="profile" onclick="menuToggle();">
             <img src="https://i.pravatar.cc/60" alt="">
         </div>
@@ -91,7 +97,7 @@ export default{
             </li>
             <li>
               <Link href="/contact" class="text-xs font-bold uppercase"
-                >Contact</Link
+                >Contact us</Link
               >
             </li>
 
@@ -104,7 +110,7 @@ export default{
 
 
             <li>
-            <Link href="/about"   class="text-xs font-bold uppercase">About</Link>
+            <Link href="/about"   class="text-xs font-bold uppercase">About us</Link>
 
 
             </li>
@@ -113,7 +119,7 @@ export default{
               <div class="mt-8 md:mt-0">
 
                 <Link v-if="$page.props.auth.user"  class=" ml-4 text-xs font-bold uppercase"></Link>
-                <Link v-else  class="  ml-4 text-xs font-bold uppercase">home</Link>
+                <Link v-else  class="  ml-4 text-xs font-bold uppercase">home page</Link>
 
                 <a
                   href="#newLetter"

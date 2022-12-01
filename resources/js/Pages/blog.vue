@@ -1,28 +1,15 @@
-<script>
-import Layeout from "../Layouts/layeout.vue";
-
+<script setup>
+import Post from '@/Components/posts/post.vue';
+import layeoutVue from '@/Layouts/layeout.vue';
 import AllPostsHeader from "../Components/hero-section/all-posts-header.vue";
-import FeaturedPost from "../Components/featured/featured-post.vue";
-import post from "../Components/posts/post.vue";
-import DropdownVue from "@/Components/build-in-components/Dropdown.vue";
 import { Link } from '@inertiajs/inertia-vue3'
-
-export default {
-    components: { Layeout, FeaturedPost, AllPostsHeader, post, DropdownVue ,Link},
-    props: {
-        featuredPosts: Array,
-        posts: Array,
-        canLogin: Boolean,
-        canRegister: Boolean,
-    },
-    setup(props) {
-        return {};
-    },
-};
+defineProps({
+    posts:Array
+})
 </script>
-
 <template>
-    <layeout :canLogin="canLogin" :canRegister="canRegister">
+    <layeoutVue>
+
         <header class="max-w-xl mx-auto mt-20 text-center w-full h-full m-10">
             <div v-if="$page.props.auth.user">
                 <h2
@@ -33,7 +20,7 @@ export default {
                         {{ $page.props.auth.user.name }}</span
                     >
                 </h2>
-                <div class="flex gap-6 justify-center">
+                <div class="flex gap-3 justify-center">
                     <p
                         class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                     >
@@ -46,55 +33,10 @@ export default {
                     />
                 </div>
             </div>
+            <AllPostsHeader title="letest blog posts " />
 
-            <h1 v-else class="text-3xl">
-                welcome to
-                <span class="text-blue-500">Manners and </span>ettiquetes
-                <p class="text-sm mt-8 mx-6">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Tempora a eius assumenda vitae ab accusamus similique
-                    dignissimos reprehenderit temporibus mollitia?
-                </p>
-            </h1>
 
-            <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8"></div>
-
-            <div
-                v-if="$page.props.flash.message"
-                class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-emerald-500"
-            >
-                <span class="text-xl inline-block mr-5 align-middle">
-                    <i class="fa fa-bell"></i>
-                </span>
-                <span class="inline-block align-middle mr-8">
-                    {{ $page.props.flash.message }}
-                </span>
-                <button
-                    class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                    onclick="closeAlert(event)"
-                >
-                    <span>×</span>
-                </button>
-            </div>
-
-            <div
-                v-if="$page.props.flashError.ErrormessageE"
-                class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500"
-            >
-                <span class="text-xl inline-block mr-5 align-middle">
-                    <i class="fa fa-bell"></i>
-                </span>
-                <span class="inline-block align-middle mr-8">
-            {{$page.props.flashError.ErrormessageE}}
-                </span>
-                <button
-                    class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                    onclick="closeAlert(event)"
-                >
-                    <span>×</span>
-                </button>
-            </div>
-
+            <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-2 mb-5"></div>
 
             <form method="GET" action="#" class="flex items-center m-6">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -147,17 +89,24 @@ export default {
                 </button>
             </form>
         </header>
-        <section></section>
-        <FeaturedPost :posts="featuredPosts" />
-        <AllPostsHeader title="old-posts" />
-
         <section
+
+
             class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10"
         >
-            <post v-for="post in posts" :key="post.id" :post="post" />
-        </section>
+<Post v-for="post in posts.data" :key="post.id" :post="post" />
+</section>
 
 
-    </layeout>
+
+<section  class="flex justify-end m-10">
+  <ul class="inline-flex items-center -space-x-px">
+
+    <li v-for="link in posts.links" :key="link.id">
+      <Link :href="link.url" v-html="link.label" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300  bg-blue-50 hover:bg-blue-100 hover:text-blue-700"></Link>
+    </li>
+
+  </ul>
+    </section>
+    </layeoutVue>
 </template>
-<style></style>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContactUs;
 use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\UpdateContactUsRequest;
+use App\Models\Post;
 use App\Models\User;
 use Inertia\Inertia;
 use PhpParser\Builder\Use_;
@@ -19,8 +20,10 @@ class ContactUsController extends Controller
     public function index(ContactUs $contactUs)
     {
    $contacts=$contactUs->all();
+   $posts=Post::with(['category','author'])->get();
   return  Inertia::render('messages',[
-    'messages'=>$contacts
+    'messages'=>$contacts,
+    'posts'=>$posts
    ]);
 
     }

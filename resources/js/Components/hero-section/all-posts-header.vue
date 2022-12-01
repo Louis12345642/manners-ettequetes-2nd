@@ -5,7 +5,7 @@ const props=defineProps(['title']);
     <section>
       <div>
         <h2
-          class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
+          class="font-mono font-semibold text-lg text-center mt-5 text-gray-600 md:text-2xl lg:3xl"
         >
 
           <span class="secondary-color">Manners and Ettequettes</span> {{props.title}}

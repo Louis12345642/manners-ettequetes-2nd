@@ -18,21 +18,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post)
     {
-        $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
-        // $dogs = Dogs::orderBy('id', 'desc')->take(5)->get();
-        $posts = Post::filter(request(['search']))->get();
-        // dd($posts);
-
-
-        // return inertia('Posts/home',compact('posts'));
-        return Inertia::render('home', [
-            'posts' => $posts,
-            'featuredPosts' => $featuredPosts,
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-
+        $posts=$post->with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(6);
+        return Inertia::render('blog',[
+   'posts'=>$posts
         ]);
     }
 
@@ -41,9 +31,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-     return Inertia::render('admin/createPost');
+        $posts=$post->with(['category','author'])->get();
+     return Inertia::render('admin/createPost',[
+'posts'=>$posts
+     ]);
     }
 
     /**

@@ -63,7 +63,7 @@ class DasboardController extends Controller
      */
     public function edit(Dasboard $dasboard)
     {
-        //
+
     }
 
     /**

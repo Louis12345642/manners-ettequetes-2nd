@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -17,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        $categories = Category::latest()->get();
+        return inertia('admin/categories/index',compact('categories'));
     }
 
     /**
@@ -27,7 +29,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('admin/categories/Create');
+
     }
 
     /**
@@ -38,7 +41,11 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $categories = $request->all();
+        $categories = Category::create($categories);
+        return Redirect::route('categories');
+
+
     }
 
     /**
@@ -69,7 +76,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // dd($category);
+        return inertia('admin/categories/Edit',compact('category'));
+
     }
 
     /**

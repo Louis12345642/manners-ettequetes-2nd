@@ -1,11 +1,14 @@
 <script setup>
 import addminlayout from './layeout/addminlayout.vue'
+defineProps({
+    posts:Array
+})
 </script>
 <template>
-<addminlayout>
+<addminlayout :posts="posts">
     <section class="lg:col-span-2">
                 <div
-                    class="p-5 my-4 card-bg card-border rounded-lg shadow-md h-70 hover:bg-gray-200 block"
+                    class="p-5 my-4 card-bg card-border rounded-lg shadow-md h-70  block"
                 >
 
                     <h1

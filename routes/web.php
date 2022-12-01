@@ -21,7 +21,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
-    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(6);
+    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->take(3)->get();
     $paginatedPosts=response()->json([$posts]);
 
     // dd($posts);
@@ -42,7 +42,8 @@ require __DIR__ . '/auth.php';
 
 // store newsletter
 route::get('/newsletter', [NewsletterController::class, 'store']);
-// route::get('/', [PostController::class, 'index']);
+route::get('/blog', [PostController::class,'index']);
+
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
 route::get('/messages',[ContactUsController::class,'index'])->middleware(['auth', 'verified']);
@@ -51,7 +52,12 @@ route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show']);
 // the admin section
-route::get('/dashboard', [DasboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+route::get('/dashboard', [DasboardController::class, 'index'])
+->middleware(
+    ['auth', 'verified']
+    )->name('dashboard');
+
 
 //get a create post form
 
@@ -74,3 +80,17 @@ route::get('/author/{author:name}', function (User $author) {
 
     ]);
 });
+// Admins routes
+Route::prefix('admin')->group(function () {
+// Admin Category routes
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/categories', 'index')->name('categories');
+    Route::get('/categories/create', 'create')->name('categories.create');
+    Route::post('/categories', 'store')->name('categories.store');
+    Route::get('/categories/{category}', 'edit')->name('categories.edit');
+    // Route::put('/categories/{category}', 'update')->name('categories.update');
+    // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+});
+});
+
+
