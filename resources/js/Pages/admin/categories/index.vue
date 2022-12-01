@@ -3,6 +3,7 @@ import layeoutVue from "@/Layouts/layeout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 import addminlayout from "../layeout/addminlayout.vue";
+import Table from "./components/Table.vue";
 defineProps({
     categories: Array,
 });
@@ -12,7 +13,7 @@ defineProps({
     <addminlayout>
         <!-- component -->
         <!-- This is an example component -->
-        <div class="max-w-2xl mx-auto">
+        <!-- <div class="max-w-2xl mx-auto">
             <Link :href="route('categories.create')" class="bg-blue-500 px-2 py-3 mb-16">Create</Link>
             <div class="flex flex-col">
                 <div class="overflow-x-auto shadow-md sm:rounded-lg">
@@ -115,7 +116,8 @@ defineProps({
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <Table :categories="categories" />
     </addminlayout>
 </template>
 <style>

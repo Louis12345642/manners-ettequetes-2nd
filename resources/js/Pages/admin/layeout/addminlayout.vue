@@ -99,7 +99,12 @@ defineProps({
            <span><img class="w-6 h-6" src="/categories.png" alt=""></span><span   class="text-xs font-bold uppercase">
 
 <!-- <SelectMenu title="categories" :posts="posts"/> -->
-<categorySelect title="categories" :posts="posts"/>
+<!-- <categorySelect title="categories" :posts="posts"/> -->
+<Link
+                        :href="route('categories')"
+                        class="text-xs font-bold uppercase"
+                        >categories</Link>
+
                     </span>
 
                 </div>
