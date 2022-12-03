@@ -104,22 +104,18 @@ Route::prefix('admin')->group(function () {
     Route::prefix('admin')->group(function () {
         // Admin posts routes
         Route::controller(DasboardController::class)->group(function () {
-            Route::get('/posts', 'index')->name('dashboard');
+            Route::get('/dashboard', 'index')->name('dashboard');
             route::get('/create',[PostController::class,'create'])->name('create');
-            // Route::get('/categories/create', 'create')->name('categories.create');
-            // Route::post('/categories', 'store')->name('categories.store');
-            // Route::get('/categories/{category}', 'edit')->name('categories.edit');
-            // Route::put('/categories/{category}', 'update')->name('categories.update');
-            // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+            Route::post('/add', [PostController::class,'store'])->name('posts.add');
+            Route::get('/post/edit/{post:slug}', [PostController::class,'edit'])->name('post.edit');
+            Route::put('/post/{post:slug}', [PostController::class,'update'])->name('post.update');
+            Route::delete('/post/{post:slug}', [PostController::class,'destroy'])->name('post.delete');
         });
         });
 
 
 
-//         route::get('/dashboard', [DasboardController::class, 'index'])
-// ->middleware(
-//     ['auth', 'verified']
-//     )->name('dashboard');
+
 
 Route::prefix('admin')->group(function () {
     // Admin posts routes

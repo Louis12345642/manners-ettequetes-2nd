@@ -15,7 +15,10 @@ defineProps({
 
 <template>
 <addminlayout :posts="posts">
+
+
     <section class="three-ccard-wrapper grid grid-cols-2 justify-items-center p-6 gap-10">
+
     <!-- <Statistic/>
     <Statistic/> -->
     </section>

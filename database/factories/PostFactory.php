@@ -26,8 +26,7 @@ class PostFactory extends Factory
             'slug' => Str::slug($title),
             'category_id'=>Category::factory(),
             'user_id'=>User::factory(),
-            'excert' => str::excerpt($body),
-            'author' => fake()->name(),
+            'excerpt' => str::excerpt($body),
             'body' => $body
 
 

@@ -21,8 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class);
             $table->string('title');
             $table->string('slug');
-            $table->text('excert');
-            $table->string('author');
+            $table->text('excerpt');
             $table->text('body');
             $table->timestamps();
         });

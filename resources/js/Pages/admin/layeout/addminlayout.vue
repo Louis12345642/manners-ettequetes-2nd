@@ -62,8 +62,29 @@ defineProps({
                     </form>
                 </div>
 
-                <div>
+                <div class="z-10 cursor-pointer">
+                    <div class="profile"  onclick="menuToggle();">
                     <span><img class="w-10 h-10" src="/user.png" alt=""></span>
+                    </div>
+                    <div v-if="$page.props.auth.user" class="action card-border ml-2">
+           <div  class="menu ">
+            <h3>
+               welcome profile
+                <div>
+                   {{ $page.props.auth.user.email}}
+                </div>
+            </h3>
+            <ul class="ml-8">
+                <li>
+                    <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="text-xs font-bold ">Dashboard</Link>
+                </li>
+                <li>
+
+                    <Link v-if="$page.props.auth.user" :href="route('logout')" method="post" class=" ml-4 text-xs font-bold">logout</Link>
+                </li>
+            </ul>
+        </div>
+    </div>
                 </div>
             </section>
         </nav>
@@ -80,51 +101,48 @@ defineProps({
                     v-if="$page.props.auth.user"
                     :href="route('dashboard')"
                     class="text-xs font-bold uppercase flex justify-center"
-                    >Dashboard</Link
+                    >{{$page.props.auth.user.name}}</Link
                 >
 
 
                 <div class="mt-10 p-4 pb-4">
 
-                <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
-           <span><img class="w-7 h-7" src="/dashboard (1).png" alt=""></span><span> <Link
-                        v-if="$page.props.auth.user"
-                        :href="route('dashboard')"
-                        class="text-xs font-bold uppercase"
-                        >Dashboard</Link
-                    ></span>
+                    <Link
+                :href="route('dashboard')"
+                 class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
+           <span><img class="w-6 h-6" src="/dashboard (1).png" alt=""></span><span   class="text-xs font-bold uppercase">
 
-                </div>
-                <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
+dashboard
+</span>
+
+           </Link>
+                <Link
+                :href="route('categories')"
+                 class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
            <span><img class="w-6 h-6" src="/categories.png" alt=""></span><span   class="text-xs font-bold uppercase">
 
-<!-- <SelectMenu title="categories" :posts="posts"/> -->
-<!-- <categorySelect title="categories" :posts="posts"/> -->
-<Link
-                        :href="route('categories')"
-                        class="text-xs font-bold uppercase"
-                        >categories</Link>
+categories
+</span>
 
-                    </span>
+           </Link>
+                <Link
+                :href="route('users')"
+                 class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
+           <span><img class="w-6 h-6" src="/man.png" alt=""></span><span   class="text-xs font-bold uppercase">
 
-                </div>
-                <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
-           <span><img class="w-6 h-6" src="/man.png" alt=""></span><span>
-            <Link
-                        :href="route('users')"
-                        class="text-xs font-bold uppercase"
-                        >users</Link>
-                    </span>
+users
+</span>
 
-                </div>
-                <div class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
-           <span><img class="w-6 h-6" src="/dashboard.png" alt=""></span><span> <Link
-                        :href="route('messages')"
-                        class="text-xs font-bold uppercase"
-                        >messages</Link
-                    ></span>
+           </Link>
+                <Link
+                :href="route('messages')"
+                 class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
+           <span><img class="w-6 h-6" src="/dashboard.png" alt=""></span><span   class="text-xs font-bold uppercase">
 
-                </div>
+messages
+</span>
+
+           </Link>
 
 
 

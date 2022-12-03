@@ -10,6 +10,10 @@ use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+// use App\Models\Str;
+
+
 
 class PostController extends Controller
 {
@@ -45,6 +49,15 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
+    public function store(StorePostRequest $request)
+    {
+        // Str::slug($title);
+        //validate the post data
+        $posts=$request->all();
+        $posts = Post::create($posts);
+        return Redirect::route('dashboard');
+    }
+
     public function storeComment(Post $post)
     {
 
@@ -64,7 +77,6 @@ class PostController extends Controller
 
         return back();
     }
-
 
     // }
     /**
@@ -91,6 +103,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $post->load(['category', 'author', 'comment.CommentAuthor',]);
+
+        return Inertia::render('admin/posts/update', [
+            'post' => $post,
+
+        ]);
     }
 
     /**
@@ -102,7 +120,8 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return Redirect::route('dashboard')->with('message', 'post updated seccefully.');
     }
 
     /**
@@ -113,6 +132,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete($post);
+        return Redirect::route('dashboard')->with('message', 'post deleted seccefully.');
     }
 }

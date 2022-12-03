@@ -4,11 +4,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Post extends Model
 {
-    use HasFactory;
-    protected $fillable =['user_id','body'];
+    use HasFactory, HasSlug;
+    protected $fillable =['user_id','body','category_id','title','excerpt','slug'];
+
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     public function category(){
         return $this->belongsTo(Category::class,'category_id');

@@ -5,28 +5,54 @@ import { usePage } from '@inertiajs/inertia-vue3'
 import InputError from '@/Components/InputError.vue';
 import { computed } from 'vue'
 import addminlayout from '../layeout/addminlayout.vue'
-defineProps({
-    posts:Array
+import { toRefs } from "@vue/reactivity";
+const props=defineProps({
+    post:Array
 })
 
-// i was missing the props.value but now is fix
+
+//this is how to accesss props data with the script tags not template
+
+let {post}=toRefs(props);
+
+
+// i was missing the props.value but now is fix to make the user is work
 let user_id =usePage().props.value.auth.user.id
 
 const form =useForm({
-title:null,
+title:post.value.title,
 user_id:user_id,
-category_id:null,
-excerpt:null,
-body:null
+category_id:post.value.category_id,
+excerpt:post.value.excerpt,
+body:post.value.body
 });
 
 const submit =()=>{
-    Inertia.post(route('posts.add'),form)
+    Inertia.put(`/admin/post/${post.value.slug}`,form)
 }
 
 </script>
 <template>
-<addminlayout :posts="posts">
+<addminlayout :posts="post">
+
+    <div
+                    v-if="$page.props.flash.message"
+                    class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-emerald-500"
+                >
+                    <span class="text-xl inline-block mr-5 align-middle">
+                        <i class="fa fa-bell"></i>
+                    </span>
+                    <span class="inline-block align-middle mr-8">
+                        <b class="capitalize">thank you</b>
+                        {{ $page.props.flash.message }}
+                    </span>
+                    <button
+                        class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                        onclick="closeAlert(event)"
+                    >
+                        <span>×</span>
+                    </button>
+                </div>
 
     <div v-if="$page.props.auth.user.id">
 
@@ -41,7 +67,7 @@ const submit =()=>{
                     <h1
                         class="text-lg font-sans font-bold mt-3 text-center uppercase mb-3"
                     >
-                        create a new post
+                      update the post
                     </h1>
                     <!-- <form @submit.prevent="submitData" class="p-5 py-3"> -->
                     <label class="block my-3 font-mono font-bold" for=""
@@ -70,7 +96,7 @@ const submit =()=>{
                     >
                         <option
                         :value="post.category.id"
-                         v-for="post in posts" :key="post.id" selected>{{post.category.title}}</option>
+                         selected>{{post.category.title}}</option>
 
                     </select>
 

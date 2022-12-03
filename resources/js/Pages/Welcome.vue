@@ -23,7 +23,8 @@ export default {
 
 <template>
     <layeout :canLogin="canLogin" :canRegister="canRegister">
-        <header class="max-w-xl mx-auto mt-20 text-center w-full h-full m-10">
+        <main >
+            <header class="max-w-xl mx-auto mt-20 text-center w-full h-full m-10">
             <div v-if="$page.props.auth.user">
                 <h2
                     class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
@@ -158,6 +159,7 @@ export default {
         </section>
 
 
+        </main>
     </layeout>
 </template>
 <style></style>
