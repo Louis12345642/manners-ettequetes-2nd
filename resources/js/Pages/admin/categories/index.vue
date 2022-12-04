@@ -2,6 +2,7 @@
 import layeoutVue from "@/Layouts/layeout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import moment from 'moment'
 
 import addminlayout from "../layeout/addminlayout.vue";
 import Table from "./components/Table.vue";

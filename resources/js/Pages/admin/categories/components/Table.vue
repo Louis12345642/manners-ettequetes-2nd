@@ -1,7 +1,17 @@
 <script setup>
-defineProps({
+import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-vue3";
+import { toRefs } from "@vue/reactivity";
+import moment from 'moment'
+let props=defineProps({
     categories:Array
 })
+// let {categories} = toRefs(props)
+const Delete = (slug,title)=>{
+ if(confirm(`Are sure you want to delete ${title}`)){
+    Inertia.delete(route('category.delete',slug))
+ }
+}
 </script>
 
 
@@ -40,11 +50,12 @@ defineProps({
                   {{category.slug}}
                 </td>
                 <td class="py-4 px-6">
-                   {{category.created_at}}
+              {{      moment(category.created_at).format('MMMM Do YYYY, h:mm:ss a')}}
+
                 </td>
                 <td class="py-4 px-6 flex gap-4 ">
-                    <a href="#" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></a>
-                    <a href="#" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></a>
+                    <Link :href="route('category.edit',category.slug)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
+                    <Link @click="Delete(category.slug,category.title)"   class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
                     <a href="#" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></a>
                 </td>
             </tr>
@@ -54,3 +65,6 @@ defineProps({
 </div>
 
 </template>
+<style scoped>
+
+</style>

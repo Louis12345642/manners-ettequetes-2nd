@@ -76,7 +76,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        // dd($category);
+
         return inertia('admin/categories/Edit',compact('category'));
 
     }
@@ -90,7 +90,8 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->all());
+        return Redirect::route('categories')->with('message', 'category updated sucessfully.');
     }
 
     /**
@@ -101,6 +102,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete($category);
+        return Redirect::route('categories')->with('message', 'post deleted seccefully.');
     }
 }

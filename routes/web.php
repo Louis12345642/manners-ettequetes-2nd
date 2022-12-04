@@ -80,9 +80,9 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/categories', 'index')->name('categories');
     Route::get('/categories/create', 'create')->name('categories.create');
     Route::post('/categories', 'store')->name('categories.store');
-    Route::get('/categories/{category}', 'edit')->name('categories.edit');
-    // Route::put('/categories/{category}', 'update')->name('categories.update');
-    // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+    Route::get('/categories/{category:slug}', 'edit')->name('category.edit');
+    Route::put('/categories/{category:slug}', 'update')->name('category.update');
+    Route::delete('/categories/{category:slug}', 'destroy')->name('category.delete');
 });
 });
 

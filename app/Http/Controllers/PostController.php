@@ -104,9 +104,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $post->load(['category', 'author', 'comment.CommentAuthor',]);
+        $categories =$post->category->get();
 
         return Inertia::render('admin/posts/update', [
             'post' => $post,
+            'categories'=>$categories
 
         ]);
     }

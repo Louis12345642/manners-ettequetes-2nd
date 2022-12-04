@@ -7,7 +7,8 @@ import { computed } from 'vue'
 import addminlayout from '../layeout/addminlayout.vue'
 import { toRefs } from "@vue/reactivity";
 const props=defineProps({
-    post:Array
+    post:Array,
+    categories:Array
 })
 
 
@@ -94,9 +95,9 @@ const submit =()=>{
                         id="countries"
                         class="bg-gray-100 border border-gray-300 text-black font-semibold text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     >
-                        <option
-                        :value="post.category.id"
-                         selected>{{post.category.title}}</option>
+                        <option v-for="category in categories" :key="category.id"
+                        :value="category.id"
+                         selected>{{category.title}}</option>
 
                     </select>
 

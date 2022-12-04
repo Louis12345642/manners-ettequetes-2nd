@@ -13,7 +13,6 @@ const Delete = (slug)=>{
         Inertia.delete(route('post.delete',slug))
     }
 
-
 }
 
 </script>
