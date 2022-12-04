@@ -57,7 +57,7 @@ const Delete = (slug)=>{
                 <td class="py-4 px-6 flex gap-4 ">
                     <Link :href="route('post.edit',post.slug)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
                     <Link @click="Delete(post.slug)"   class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
-                    <a href="#" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></a>
+                    <Link :href="route('posts.under.one.category',post.category.slug)"   class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></Link>
                 </td>
             </tr>
 

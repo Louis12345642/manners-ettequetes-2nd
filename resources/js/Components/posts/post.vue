@@ -13,7 +13,7 @@ export default{
 const post= props.post
 const postRoute=ref('/posts/'+post.slug)
 const categoryRoute=ref('/categories/'+post.category.slug)
-const authorRoute=ref('/author/'+post.author.username)
+const authorRoute=ref('/author/'+post.author.name)
 
 return{
   moment,

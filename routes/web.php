@@ -51,7 +51,7 @@ route::get('/contact', [ContactUsController::class, 'create']);
 route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show']);
 // get all the post by one category
-route::get('categories/{category:slug}', [CategoryController::class, 'show']);
+route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('posts.under.one.category');
 
 
 
@@ -72,7 +72,7 @@ route::get('/author/{author:name}', function (User $author) {
         'author' => $author
 
     ]);
-});
+})->name('authors.post');
 // Admins routes
 Route::prefix('admin')->group(function () {
 // Admin Category routes
@@ -90,12 +90,15 @@ Route::prefix('admin')->group(function () {
     // Admin users routes
     Route::controller(usersController::class)->group(function () {
         Route::get('/users', 'index')->name('users');
+        Route::get('/users/{user:name}', 'edit')->name('user.edit');
+         Route::put('/users/update{user:name}', 'update')->name('user.update');
+           Route::delete('/users/delete/{user:name}', 'destroy')->name('user.delete');
 
         // Route::get('/categories/create', 'create')->name('categories.create');
         // Route::post('/categories', 'store')->name('categories.store');
-        // Route::get('/categories/{category}', 'edit')->name('categories.edit');
-        // Route::put('/categories/{category}', 'update')->name('categories.update');
-        // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+
+
+
     });
     });
 

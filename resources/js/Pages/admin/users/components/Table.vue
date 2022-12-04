@@ -1,7 +1,19 @@
 <script setup>
+import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-vue3";
+
 defineProps({
     users:Array
 })
+
+const Delete = (name)=>{
+    if(confirm(`are you sure want to delete this user ${name}`)){
+
+        Inertia.delete(route('user.delete',name))
+
+    }
+
+}
 </script>
 
 
@@ -43,9 +55,9 @@ defineProps({
                    {{user.created_at}}
                 </td>
                 <td class="py-4 px-6 flex gap-4 ">
-                    <a href="#" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></a>
-                    <a href="#" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></a>
-                    <a href="#" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></a>
+                    <Link :href="route('user.edit',user.name)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
+                    <Link @click="Delete(user.name)" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
+                    <Link :href="route('authors.post',user.name)" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></Link>
                 </td>
             </tr>
 

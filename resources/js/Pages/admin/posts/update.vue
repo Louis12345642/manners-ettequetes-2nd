@@ -3,6 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3'
 import { usePage } from '@inertiajs/inertia-vue3'
 import InputError from '@/Components/InputError.vue';
+import { Link } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue'
 import addminlayout from '../layeout/addminlayout.vue'
 import { toRefs } from "@vue/reactivity";
@@ -356,10 +357,15 @@ const submit =()=>{
                     </div>
                     <button
                         type="submit"
-                        class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                        class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-full focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
                     >
                         Publish post
                     </button>
+
+                    <Link :href="route('dashboard')" :disabled="form.processing"
+                    class="mt-4 mx-4 px-5 py-2.5 text-sm text-purple-600 font-semibold rounded-full border border-purple-500 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 w-36">
+                cancel
+                </Link>
                 </form>
             </section>
 </addminlayout>
