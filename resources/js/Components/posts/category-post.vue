@@ -66,7 +66,7 @@ return{
                {{post.title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                {{post.body}}
+                {{post.excerpt}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
                 Published <time>{{moment(post.created_at).startOf('hour').fromNow()}} </time>

@@ -13,7 +13,7 @@ export default{
 const post= props.post
 const postRoute=ref('/posts/'+post.slug)
 const categoryRoute=ref('/categories/'+post.category.slug)
-const authorRoute=ref('/author/'+post.author.name)
+const authorRoute=ref('/author/'+post.author.username)
 
 return{
   moment,
@@ -65,7 +65,7 @@ return{
                {{post.title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                {{post.excert}}
+                {{post.excerpt}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
                 Published <time>{{moment(post.created_at).startOf('hour').fromNow()}} </time>

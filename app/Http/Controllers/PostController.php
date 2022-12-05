@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 // use App\Models\Str;
 
 
@@ -24,10 +25,13 @@ class PostController extends Controller
      */
     public function index(Post $post)
     {
-        $posts=$post->with(['category', 'author', 'comment'])->filter(request(['search']))->paginate(6);
+
+        $posts=$post->with(['category', 'author', 'comment',])->filter(request(['search']))->latest()->paginate(6);
+        // dd($posts);
         return Inertia::render('blog',[
    'posts'=>$posts
         ]);
+
     }
 
     /**
@@ -51,9 +55,17 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        // Str::slug($title);
+        $excerpt_length= 60;
+       $excerpt= Str::limit($request->body, $excerpt_length);
         //validate the post data
-        $posts=$request->all();
+        $posts = [
+       'user_id' => $request->user_id,
+       'category_id'=>$request->category_id,
+       'title'=>$request->title,
+       'excerpt'=>$excerpt,
+       'body'=>$request->body
+        ];
+
         $posts = Post::create($posts);
         return Redirect::route('dashboard');
     }

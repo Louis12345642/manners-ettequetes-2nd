@@ -6,10 +6,10 @@ defineProps({
     users:Array
 })
 
-const Delete = (name)=>{
+const Delete = (username,name)=>{
     if(confirm(`are you sure want to delete this user ${name}`)){
 
-        Inertia.delete(route('user.delete',name))
+        Inertia.delete(route('user.delete',username))
 
     }
 
@@ -56,8 +56,8 @@ const Delete = (name)=>{
                 </td>
                 <td class="py-4 px-6 flex gap-4 ">
                     <Link :href="route('user.edit',user.name)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
-                    <Link @click="Delete(user.name)" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
-                    <Link :href="route('authors.post',user.name)" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></Link>
+                    <Link @click="Delete(user.username,user.name)" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
+                    <Link :href="route('authors.post',user.username)" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></Link>
                 </td>
             </tr>
 

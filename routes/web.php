@@ -21,22 +21,15 @@ use Inertia\Inertia;
 
 
 Route::get('/', function () {
-    $featuredPosts = Post::with(['category', 'author'])->latest()->take(8)->get();
-    $posts = Post::with(['category', 'author', 'comment'])->filter(request(['search']))->take(3)->get();
-    $paginatedPosts=response()->json([$posts]);
 
-    // dd($posts);
-    // dd($paginatedPosts);
+    $posts = Post::with(['category', 'author', 'comment'])->latest()->get();
 
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
         'posts' => $posts,
-        'featuredPosts' => $featuredPosts,
     ]);
-});
+})->name('home.posts');
 
 
 require __DIR__ . '/auth.php';
@@ -49,7 +42,7 @@ route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
 
 route::post('/contact-us', [ContactUsController::class, 'store']);
-route::get('/posts/{post:slug}', [PostController::class, 'show']);
+route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post.show');
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('posts.under.one.category');
 
@@ -62,7 +55,7 @@ route::post('/posts/{post:slug}/comment', [PostController::class, 'storeComment'
 
 // get the posts by the user
 
-route::get('/author/{author:name}', function (User $author) {
+route::get('/author/{author:username}', function (User $author) {
 
     $posts = $author->posts;
     $posts->load(['category', 'author']);
@@ -90,9 +83,9 @@ Route::prefix('admin')->group(function () {
     // Admin users routes
     Route::controller(usersController::class)->group(function () {
         Route::get('/users', 'index')->name('users');
-        Route::get('/users/{user:name}', 'edit')->name('user.edit');
-         Route::put('/users/update{user:name}', 'update')->name('user.update');
-           Route::delete('/users/delete/{user:name}', 'destroy')->name('user.delete');
+        Route::get('/users/{user:username}', 'edit')->name('user.edit');
+         Route::put('/users/update{user:username}', 'update')->name('user.update');
+           Route::delete('/users/delete/{user:username}', 'destroy')->name('user.delete');
 
         // Route::get('/categories/create', 'create')->name('categories.create');
         // Route::post('/categories', 'store')->name('categories.store');

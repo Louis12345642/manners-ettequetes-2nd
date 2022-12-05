@@ -7,11 +7,17 @@ use App\Models\User;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+
 class Post extends Model
 {
     use HasFactory, HasSlug;
+
+
     protected $fillable =['user_id','body','category_id','title','excerpt','slug'];
 
+
+
+    // Str::limit($string, $limit, '...')
 
     /**
      * Get the options for generating the slug.

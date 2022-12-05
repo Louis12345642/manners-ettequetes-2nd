@@ -10,43 +10,15 @@ Link
    props:['posts'],
 
     setup(props){
-const FeaturedPost=props.posts
-const categoryRouteOne=ref('/categories/'+FeaturedPost[0].category.slug)
-const categoryRouteTwo=ref('/categories/'+FeaturedPost[1].category.slug)
-const categoryRoute3=ref('/categories/'+FeaturedPost[2].category.slug)
-const authorRoute1=ref('/author/'+FeaturedPost[0].author.username)
-const authorRoute2=ref('/author/'+FeaturedPost[1].author.username)
-const authorRoute3=ref('/author/'+FeaturedPost[2].author.username)
-const postRoute1=ref('/posts/'+FeaturedPost[3].slug)
-const postRoute2=ref('/posts/'+FeaturedPost[4].slug)
-const postRoute3=ref('/posts/'+FeaturedPost[6].slug)
-const postRoute4=ref('/posts/'+FeaturedPost[7].slug)
-
-const post1=ref('/posts/'+FeaturedPost[0].slug)
-const post2=ref('/posts/'+FeaturedPost[2].slug)
-const post3=ref('/posts/'+FeaturedPost[3].slug)
+const post=props.posts
 
 
 
 
 return{
-    FeaturedPost,
-    categoryRouteOne,
-    categoryRouteTwo,
-    categoryRoute3,
-    authorRoute1,
-    authorRoute2,
-    authorRoute3,
+    post,
+    moment
 
-    postRoute1,
- postRoute2,
- postRoute3,
- postRoute4,
-
-  post1,
- post2,
- post3,
- moment
 
 }
 
@@ -83,30 +55,30 @@ return{
                 <div>
 
                         <div class="space-x-2 ml-5">
-                    <Link :href="categoryRouteOne"
+                    <Link :href="route('posts.under.one.category',post[0].category.slug)"
                         class="px-3 py-1 my-4 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{FeaturedPost[0].category.title }}</Link>
+                        style="font-size: 10px">{{post[0].category.title }}</Link>
 
                 </div>
 
                 </div>
 
                 <h1 class="mb-4 mt-4 font-mono font-semibold text-2xl">
-                {{FeaturedPost[0].title}}
+                {{post[0].title}}
                 </h1>
                 <p class="text-gray-900 leading-7 text-md">
-                    {{FeaturedPost[0].excert}}
+                    {{post[0].excerpt}}
                 </p>
                 <p class="mt-2 block text-gray-400 text-xs">
-                  Published <time>{{moment(FeaturedPost[0].created_at).startOf('hour').fromNow()}} </time>
+                  Published <time>{{moment(post[0].created_at).startOf('hour').fromNow()}} </time>
                 </p>
                 <section class="flex justify-between">
                   <div class="flex gap-3">
-                    <Link :href="authorRoute1">
+                    <Link :href="route('authors.post',post[0].author.username)">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{FeaturedPost[0].author.name}}
+                  {{post[0].author.name}}
                   </p>
                 </Link>
                     <img
@@ -116,7 +88,7 @@ return{
                     />
                   </div>
                   <div class="p-4 mt-6">
-                    <Link :href="post1"> <button
+                    <Link :href="route('post.show',post[0].slug)"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
@@ -153,13 +125,13 @@ return{
             </div>
 
 
-           <Link :href="postRoute1">
+           <Link :href="route('post.show',post[0].slug)">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                {{FeaturedPost[3].title}}
+                {{post[3].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[3].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[3].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
         </Link>
@@ -179,13 +151,13 @@ return{
                 alt=""
               />
             </div>
-            <Link :href="postRoute2">
+            <Link :href="route('post.show',post[4].slug)">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                {{FeaturedPost[4].title}}
+                {{post[4].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[4].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[4].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -204,13 +176,13 @@ return{
               />
             </div>
 
-            <Link :href="postRoute3">
+            <Link :href="route('post.show',post[5].slug)">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                {{FeaturedPost[5].title}}
+                {{post[5].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[5].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[5].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -228,13 +200,13 @@ return{
                 alt=""
               />
             </div>
-            <Link :href="postRoute4">
+            <Link :href="route('post.show',post[6].slug)">
             <article class="mt-5">
               <p class="font-semibold leading-6 mb-4 text-sm">
-                {{FeaturedPost[6].title}}
+                {{post[6].title}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[6].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[6].created_at).startOf('hour').fromNow()}} </time>
               </p>
             </article>
             </Link>
@@ -259,9 +231,9 @@ return{
             <section>
 
                     <div class="space-x-2 ml-5">
-                    <Link :href="categoryRouteTwo"
+                    <Link :href="route('posts.under.one.category',post[1].category.slug)"
                         class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{FeaturedPost[1].category.title }}</Link>
+                        style="font-size: 10px">{{post[1].category.title }}</Link>
 
                 </div>
 
@@ -269,23 +241,23 @@ return{
 
             <article class="p-5">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
-                {{FeaturedPost[1].title}}
+                {{post[1].title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                {{FeaturedPost[1].excert}}
+                {{post[1].excerpt}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[1].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[1].created_at).startOf('hour').fromNow()}} </time>
               </p>
               <!-- this is user and image and  name -->
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                    <Link :href="authorRoute2">
+                    <Link :href="route('authors.post',post[1].author.username)">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{FeaturedPost[1].author.name}}
+                  {{post[1].author.name}}
                   </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
@@ -295,7 +267,7 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                 <Link :href="post2"> <button
+                 <Link :href="route('post.show',post[1].slug)"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more
@@ -325,9 +297,9 @@ return{
             <section>
 
                     <div class="space-x-2 ml-5">
-                    <Link :href="categoryRoute3"
+                    <Link :href="route('posts.under.one.category',post[2].category.slug)"
                         class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{FeaturedPost[2].category.title }}</Link>
+                        style="font-size: 10px">{{post[2].category.title }}</Link>
 
                 </div>
 
@@ -335,23 +307,23 @@ return{
 
             <article class="p-5">
               <h1 class="mb-4 font-mono font-semibold text-2xl">
-                {{FeaturedPost[2].title}}
+                {{post[2].title}}
               </h1>
               <p class="text-gray-900 leading-7 text-md">
-                {{FeaturedPost[2].excert}}
+                {{post[2].excerpt}}
               </p>
               <p class="mt-2 block text-gray-400 text-xs">
-                Published <time>{{moment(FeaturedPost[2].created_at).startOf('hour').fromNow()}} </time>
+                Published <time>{{moment(post[2].created_at).startOf('hour').fromNow()}} </time>
               </p>
               <!-- this is user and image and  name -->
               <section class="flex justify-between">
                 <!-- user name -->
                 <div class="flex gap-3">
-                    <Link :href="authorRoute3">
+                    <Link :href="route('authors.post',post[2].author.username)">
                 <p
                     class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                   >
-                  {{FeaturedPost[2].author.name}}
+                  {{post[2].author.name}}
                   </p></Link>
                   <img
                     class="mt-7 w-12 h-12 rounded-full round-border"
@@ -361,7 +333,7 @@ return{
                 </div>
                 <!-- readmore button -->
                 <div class="p-4 mt-6">
-                    <Link :href="post3"> <button
+                    <Link :href="route('post.show',post[2].slug)"> <button
                     class="font-sans font-semibold btn-bg rounded-lg text-sm h-8"
                   >
                     read more

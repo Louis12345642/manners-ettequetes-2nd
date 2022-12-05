@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import Layeout from "../Layouts/layeout.vue";
 
 import AllPostsHeader from "../Components/hero-section/all-posts-header.vue";
@@ -6,19 +6,25 @@ import FeaturedPost from "../Components/featured/featured-post.vue";
 import post from "../Components/posts/post.vue";
 import DropdownVue from "@/Components/build-in-components/Dropdown.vue";
 import { Link } from '@inertiajs/inertia-vue3'
+import { computed } from "@vue/reactivity";
 
-export default {
-    components: { Layeout, FeaturedPost, AllPostsHeader, post, DropdownVue ,Link},
-    props: {
-        featuredPosts: Array,
-        posts: Array,
+
+const props=defineProps({
+    posts: Array,
         canLogin: Boolean,
         canRegister: Boolean,
-    },
-    setup(props) {
-        return {};
-    },
-};
+})
+
+// = (posts)=>{
+//
+// }
+
+// let number_of_display = computed(
+// get(posts){
+//     let {post1,post2,post3} =posts
+// }
+// );
+
 </script>
 
 <template>
@@ -149,13 +155,13 @@ export default {
             </form>
         </header>
         <section></section>
-        <FeaturedPost :posts="featuredPosts" />
+        <FeaturedPost :posts="posts" />
         <AllPostsHeader title="old-posts" />
 
         <section
             class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-10"
         >
-            <post v-for="post in posts" :key="post.id" :post="post" />
+            <post v-for="post in posts.slice(8) " :key="post.id" :post="post" />
         </section>
 
 

@@ -54,10 +54,17 @@ class RegisteredUserController extends Controller
 
         ]);
 
+   // Define Email Address
+   $email  = $request->email;
 
+   // Get the username by slicing string
+   $username = strstr($email, '@', true);
+
+   // Display the username
+// dd($username);
         $user = User::create([
             'name' => $request->name,
-            // 'username' => $username,
+            'username' => $username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
