@@ -11,16 +11,16 @@ defineProps({
     <layeoutVue>
 
         <header class="max-w-xl mx-auto mt-20 text-center w-full h-full m-10">
-            <div v-if="$page.props.auth.user">
-                <h2
+            <!-- <div v-if="$page.props.auth.user">
+                 <h2
                     class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
                 >
                     welcome back
                     <span class="secondary-color">
                         {{ $page.props.auth.user.name }}</span
                     >
-                </h2>
-                <div class="flex gap-3 justify-center">
+                </h2> -->
+                <!-- <div class="flex gap-3 justify-center">
                     <p
                         class="mt-10 align-bottom font-sans font-semibold text-gray-500"
                     >
@@ -31,8 +31,8 @@ defineProps({
                         src="logo.jpg"
                         alt=""
                     />
-                </div>
-            </div>
+                </div> -->
+
             <AllPostsHeader title="letest blog posts " />
 
 

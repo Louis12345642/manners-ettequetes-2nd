@@ -36,7 +36,7 @@ require __DIR__ . '/auth.php';
 
 // store newsletter
 route::get('/newsletter', [NewsletterController::class, 'store']);
-route::get('/blog', [PostController::class,'index']);
+route::get('/blog', [PostController::class,'index'])->name('blog.posts');
 
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);

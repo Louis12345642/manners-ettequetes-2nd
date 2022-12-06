@@ -94,8 +94,8 @@ p{
     border: 4px solid var(--secondaryColor);
 }
 .trending-image{
-    width: 10px;
-    width: 10px;
+    width: 8px;
+
 }
 .input-width{
     width:100%;

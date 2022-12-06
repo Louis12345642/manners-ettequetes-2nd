@@ -29,7 +29,7 @@ class PostController extends Controller
         $posts=$post->with(['category', 'author', 'comment',])->filter(request(['search']))->latest()->paginate(6);
         // dd($posts);
         return Inertia::render('blog',[
-   'posts'=>$posts
+    'posts'=>$posts
         ]);
 
     }
