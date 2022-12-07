@@ -16,7 +16,7 @@ const form = useForm({
 })
 
 const submit = ()=>{
-form.put(route('user.update',user.value.name),form)
+form.put(route('user.update',user.value.username),form)
 }
 </script>
 

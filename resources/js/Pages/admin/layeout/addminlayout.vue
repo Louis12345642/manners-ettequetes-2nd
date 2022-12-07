@@ -4,9 +4,16 @@ import { Link } from "@inertiajs/inertia-vue3";
 import allPostsHeaderVue from "@/Components/hero-section/all-posts-header.vue";
 import SelectMenu from "@/Components/selectMenu.vue";
 import categorySelect from "../../../Components/categorySelect.vue"
-defineProps({
+import { toRefs } from "@vue/reactivity";
+
+let  props = defineProps({
     posts: Array,
+    message:String,
+    Errormessage:String
 });
+
+let {message}=toRefs(props);
+
 </script>
 
 <template>
@@ -108,11 +115,20 @@ defineProps({
                 <div class="mt-10 p-4 pb-4">
 
                     <Link
-                :href="route('dashboard')"
+                href="#"
                  class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
            <span><img class="w-6 h-6" src="/dashboard (1).png" alt=""></span><span   class="text-xs font-bold uppercase">
 
 dashboard
+</span>
+
+           </Link>
+           <Link
+                :href="route('dashboard')"
+                 class="hover:bg-gray-200 pointer bg-red-100 p-5 card-border rounded-lg mb-4 flex gap-2 shadow-sm ">
+           <span><img class="w-6 h-6" src="/dashboard.png" alt=""></span><span   class="text-xs font-bold uppercase">
+
+posts
 </span>
 
            </Link>
@@ -153,6 +169,7 @@ messages
 
                 <section class="p-10">
              <!-- <tableVue :posts="posts"/> -->
+
              <slot/>
                 </section>
             </div>

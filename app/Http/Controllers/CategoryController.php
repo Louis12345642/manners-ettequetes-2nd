@@ -43,7 +43,7 @@ class CategoryController extends Controller
     {
         $categories = $request->all();
         $categories = Category::create($categories);
-        return Redirect::route('categories');
+        return Redirect::route('categories')->with('message','category created successfully');
 
 
     }
@@ -103,6 +103,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete($category);
-        return Redirect::route('categories')->with('message', 'post deleted seccefully.');
+        return Redirect::route('categories')->with('message', 'category deleted seccefully.');
     }
 }

@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import Layeout from '../Layouts/layeout.vue'
 
 import AllPostsHeader from '../Components/hero-section/all-posts-header.vue'
@@ -9,20 +9,11 @@ import CategoryPost from '@/Components/posts/category-post.vue'
 // import FeaturedPost from '../featured/featured-post.vue'
 // import AllPostsHeader from '../hero-section/all-posts-header.vue'
 // import post from './post.vue'
-
-export default{
-  components: { Layeout, FeaturedPost, AllPostsHeader ,post, CategoryPost},
-  props:{
+defineProps({
     posts:Array,
     category:Array
-  },
-    setup(props){
+})
 
-return{
-
-}
-    },
-}
 </script>
 
 <template>

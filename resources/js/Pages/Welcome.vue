@@ -7,33 +7,26 @@ import post from "../Components/posts/post.vue";
 import DropdownVue from "@/Components/build-in-components/Dropdown.vue";
 import { Link } from '@inertiajs/inertia-vue3'
 import { computed } from "@vue/reactivity";
+import { usePage } from '@inertiajs/inertia-vue3'
 import HeaderBanner from "@/Components/featured/HeaderBanner.vue";
 
 
 const props=defineProps({
     posts: Array,
-
    canLogin: Boolean,
-        canRegister: Boolean,
+    canRegister: Boolean,
 })
-
-// = (posts)=>{
-//
-// }
-
-// let number_of_display = computed(
-// get(posts){
-//     let {post1,post2,post3} =posts
-// }
-// );
-
+let Errormessage =usePage().props.value.flashError.ErrormessageE
+let message =usePage().props.value.flash.message
 </script>
 
 <template>
+
+
     <layeout :canLogin="canLogin" :canRegister="canRegister">
         <main >
 
-      <header-banner></header-banner>
+      <header-banner :message="message"  :Errormessage="Errormessage"></header-banner>
 
         <section></section>
         <br>

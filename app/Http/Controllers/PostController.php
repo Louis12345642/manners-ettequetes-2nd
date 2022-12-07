@@ -34,6 +34,14 @@ class PostController extends Controller
 
     }
 
+    public function Adminindex(Post $post)
+    {
+        $posts=$post->with(['category','author'])->latest()->get();
+       return Inertia::render('admin/posts/index',[
+'posts'=>$posts
+       ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +75,7 @@ class PostController extends Controller
         ];
 
         $posts = Post::create($posts);
-        return Redirect::route('dashboard');
+        return Redirect::route('dashboard')->with('message' ,'post created successfully');
     }
 
     public function storeComment(Post $post)

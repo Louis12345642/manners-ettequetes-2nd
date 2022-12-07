@@ -1,6 +1,7 @@
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-vue3";
+import moment from 'moment'
 
 defineProps({
     users:Array
@@ -52,10 +53,12 @@ const Delete = (username,name)=>{
                   {{user.email}}
                 </td>
                 <td class="py-4 px-6">
-                   {{user.created_at}}
+            {{moment(user.created_at)
+                            .startOf("hour")
+                            .fromNow()}}
                 </td>
                 <td class="py-4 px-6 flex gap-4 ">
-                    <Link :href="route('user.edit',user.name)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
+                    <Link :href="route('user.edit',user.username)" class="font-medium text-blue-600 ">   <i class="fa fa-edit text-emerald-500"></i></Link>
                     <Link @click="Delete(user.username,user.name)" class="font-medium text-blue-600 "> <i class="fa fa-trash" style="color: red"></i></Link>
                     <Link :href="route('authors.post',user.username)" class="font-medium text-blue-600 "> <i class="fa fa-plus-circle" style="color: #3d25b1"></i></Link>
                 </td>

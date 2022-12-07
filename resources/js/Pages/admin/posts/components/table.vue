@@ -35,6 +35,7 @@ const Delete = (slug)=>{
                 <th scope="col" class="py-3 px-6">
                   user
                 </th>
+
                 <th scope="col" class="py-3 px-6">
                     Action
                 </th>

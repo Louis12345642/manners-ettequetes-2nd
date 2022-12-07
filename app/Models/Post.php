@@ -16,9 +16,6 @@ class Post extends Model
     protected $fillable =['user_id','body','category_id','title','excerpt','slug'];
 
 
-
-    // Str::limit($string, $limit, '...')
-
     /**
      * Get the options for generating the slug.
      */
@@ -54,10 +51,5 @@ public function comment(){
     return $this->hasMany(Comment::class,'post_id');
 
 }
-
-// public function commentAuthor(){
-//     return $this->belongsTo(User::class);
-
-// }
 
 }

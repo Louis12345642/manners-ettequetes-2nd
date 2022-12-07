@@ -18,8 +18,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-
-
 Route::get('/', function () {
 
     $posts = Post::with(['category', 'author', 'comment'])->latest()->get();
@@ -36,7 +34,7 @@ require __DIR__ . '/auth.php';
 
 // store newsletter
 route::get('/newsletter', [NewsletterController::class, 'store']);
-route::get('/blog', [PostController::class,'index'])->name('blog.posts');
+route::get('/blog', [PostController::class, 'index'])->name('blog.posts');
 
 route::get('/about', [AboutusController::class, 'index']);
 route::get('/contact', [ContactUsController::class, 'create']);
@@ -45,8 +43,6 @@ route::post('/contact-us', [ContactUsController::class, 'store']);
 route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post.show');
 // get all the post by one category
 route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('posts.under.one.category');
-
-
 
 
 // comment route
@@ -68,15 +64,15 @@ route::get('/author/{author:username}', function (User $author) {
 })->name('authors.post');
 // Admins routes
 Route::prefix('admin')->group(function () {
-// Admin Category routes
-Route::controller(CategoryController::class)->group(function () {
-    Route::get('/categories', 'index')->name('categories');
-    Route::get('/categories/create', 'create')->name('categories.create');
-    Route::post('/categories', 'store')->name('categories.store');
-    Route::get('/categories/{category:slug}', 'edit')->name('category.edit');
-    Route::put('/categories/{category:slug}', 'update')->name('category.update');
-    Route::delete('/categories/{category:slug}', 'destroy')->name('category.delete');
-});
+    // Admin Category routes
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/categories', 'index')->name('categories');
+        Route::get('/categories/create', 'create')->name('categories.create');
+        Route::post('/categories', 'store')->name('categories.store');
+        Route::get('/categories/{category:slug}', 'edit')->name('category.edit');
+        Route::put('/categories/{category:slug}', 'update')->name('category.update');
+        Route::delete('/categories/{category:slug}', 'destroy')->name('category.delete');
+    });
 });
 
 Route::prefix('admin')->group(function () {
@@ -84,47 +80,31 @@ Route::prefix('admin')->group(function () {
     Route::controller(usersController::class)->group(function () {
         Route::get('/users', 'index')->name('users');
         Route::get('/users/{user:username}', 'edit')->name('user.edit');
-         Route::put('/users/update{user:username}', 'update')->name('user.update');
-           Route::delete('/users/delete/{user:username}', 'destroy')->name('user.delete');
-
-        // Route::get('/categories/create', 'create')->name('categories.create');
-        // Route::post('/categories', 'store')->name('categories.store');
-
-
-
+        Route::put('/users/update{user:username}', 'update')->name('user.update');
+        Route::delete('/users/delete/{user:username}', 'destroy')->name('user.delete');
     });
-    });
+});
 
-
-
-    Route::prefix('admin')->group(function () {
-        // Admin posts routes
-        Route::controller(DasboardController::class)->group(function () {
-            Route::get('/dashboard', 'index')->name('dashboard');
-            route::get('/create',[PostController::class,'create'])->name('create');
-            Route::post('/add', [PostController::class,'store'])->name('posts.add');
-            Route::get('/post/edit/{post:slug}', [PostController::class,'edit'])->name('post.edit');
-            Route::put('/post/{post:slug}', [PostController::class,'update'])->name('post.update');
-            Route::delete('/post/{post:slug}', [PostController::class,'destroy'])->name('post.delete');
-        });
-        });
-
-
-
-
+// Admin posts routes
 
 Route::prefix('admin')->group(function () {
-    // Admin posts routes
+
+    Route::controller(PostController::class)->group(function () {
+        Route::get('/posts', 'Adminindex')->name('dashboard');
+        route::get('post/create', 'create')->name('create');
+        Route::post('/post/add', 'store')->name('posts.add');
+        Route::get('/post/edit/{post:slug}', 'edit')->name('post.edit');
+        Route::put('/post/{post:slug}', 'update')->name('post.update');
+        Route::delete('/post/{post:slug}', 'destroy')->name('post.delete');
+    });
+});
+
+
+
+// Admin contact messages  routes
+Route::prefix('admin')->group(function () {
+
     Route::controller(ContactUsController::class)->group(function () {
-        route::get('/messages',[ContactUsController::class,'index'])->name('messages');
-        // route::get('/create',[PostController::class,'create'])->name('create');
-        // Route::get('/categories/create', 'create')->name('categories.create');
-        // Route::post('/categories', 'store')->name('categories.store');
-        // Route::get('/categories/{category}', 'edit')->name('categories.edit');
-        // Route::put('/categories/{category}', 'update')->name('categories.update');
-        // Route::delete('/categories/{category}', 'destroy')->name('categories.destory');
+        route::get('/messages', [ContactUsController::class, 'index'])->name('messages');
     });
-    });
-
-
-
+});

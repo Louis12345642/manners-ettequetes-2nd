@@ -24,6 +24,8 @@ const submit = () =>{
     <addminlayout>
         <!-- component -->
 
+
+
         <div
                     class="p-5 my-4 card-bg card-border rounded-lg shadow-md h-70  block"
                 >

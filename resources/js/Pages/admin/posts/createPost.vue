@@ -9,6 +9,10 @@ defineProps({
     posts:Array
 })
 
+let Errormessage =usePage().props.value.flashError.ErrormessageE
+let message =usePage().props.value.flash.message
+
+
 // i was missing the props.value but now is fix
 let user_id =usePage().props.value.auth.user.id
 
@@ -26,7 +30,7 @@ const submit =()=>{
 
 </script>
 <template>
-<addminlayout :posts="posts">
+<addminlayout :posts="posts" :message="message">
 
     <div v-if="$page.props.auth.user.id">
 
