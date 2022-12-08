@@ -20,14 +20,16 @@ const form =useForm({
 title:null,
 user_id:user_id,
 category_id:null,
-excerpt:null,
+image:null,
 body:null
 });
 
-const submit =()=>{
-    Inertia.post(route('posts.add'),form)
-}
 
+const submit =()=>{
+    Inertia.post(route('posts.add'),form,{
+        forceFormData: true,
+    })
+}
 </script>
 <template>
 <addminlayout :posts="posts" :message="message">
@@ -37,7 +39,7 @@ const submit =()=>{
     </div>
     <section class="lg:col-span-2">
 
-                <form  @submit.prevent="submit">
+                <form  @submit.prevent="submit" ty>
                     <div
                     class="p-5 my-4 card-bg card-border rounded-lg shadow-md h-70  block"
                 >
@@ -78,7 +80,7 @@ const submit =()=>{
 
                     </select>
 
-                    <label class="block my-3 font-mono font-bold" for=""
+                    <!-- <label class="block my-3 font-mono font-bold" for=""
                         >Excerpt</label
                     >
                     <textarea
@@ -87,8 +89,13 @@ const submit =()=>{
                         v-model="form.excerpt"
                         class="block my-3 input-width card-border rounded-md bg-slate-100 h-8"
                         type="text"
-                    ></textarea>
-                    <InputError v-if="$page.props.errors.excerpt" class="mt-2" :message="$page.props.errors.excerpt" />
+                    ></textarea> -->
+
+<label class="block mb-2 text-sm font-medium  card-bg" for="file_input">Upload file</label>
+<input  @input="form.image = $event.target.files[0]" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="file_input_help" id="file_input" type="file">
+<p class="mt-1 text-sm text-gray-500 " id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+
+                    <!-- <InputError v-if="$page.props.errors.excerpt" class="mt-2" :message="$page.props.errors.excerpt" /> -->
 
 
                 </div>

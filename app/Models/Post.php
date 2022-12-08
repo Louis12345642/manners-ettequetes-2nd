@@ -13,7 +13,7 @@ class Post extends Model
     use HasFactory, HasSlug;
 
 
-    protected $fillable =['user_id','body','category_id','title','excerpt','slug'];
+    protected $fillable =['user_id','body','category_id','title','excerpt','slug','image_name'];
 
 
     /**

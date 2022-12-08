@@ -27,7 +27,7 @@ const short = (title, limit) => {
                 <section class="m-4">
                     <img
                         class="rounded-lg card-border card-h"
-                        src="atomic.jpg"
+                        :src="post.image_name"
                         alt=""
                     />
                 </section>

@@ -27,6 +27,7 @@ class PostFactory extends Factory
             'category_id'=>Category::factory(),
             'user_id'=>User::factory(),
             'excerpt' => str::excerpt($body),
+            'image_name' => fake()->imageUrl($width=400, $height=400),
             'body' => $body
 
 

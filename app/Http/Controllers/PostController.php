@@ -64,15 +64,23 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $excerpt_length= 60;
-       $excerpt= Str::limit($request->body, $excerpt_length);
-        //validate the post data
+        $excerpt= Str::limit($request->body, $excerpt_length);
+        $image =  $request->file('image');
+        $image_name = $image->getClientOriginalName();
+        $image->move(public_path('/'),$image_name);
+        $image_path = "/" . $image_name;
+
         $posts = [
        'user_id' => $request->user_id,
        'category_id'=>$request->category_id,
        'title'=>$request->title,
+       'image_name'=>$image_path,
        'excerpt'=>$excerpt,
        'body'=>$request->body
         ];
+
+
+
 
         $posts = Post::create($posts);
         return Redirect::route('dashboard')->with('message' ,'post created successfully');

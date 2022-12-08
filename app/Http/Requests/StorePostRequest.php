@@ -27,6 +27,7 @@ class StorePostRequest extends FormRequest
             'title' => 'required|unique:posts|max:225',
             'body' => 'required',
             // 'excerpt' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'user_id' => 'required',
             'category_id' => 'required',
 

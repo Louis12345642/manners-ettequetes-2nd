@@ -18,8 +18,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Category::class);
             $table->string('title');
+            $table->string('image_name');
             $table->string('slug');
             $table->text('excerpt');
             $table->text('body');

@@ -103,7 +103,6 @@ Route::prefix('admin')->group(function () {
 
 // Admin contact messages  routes
 Route::prefix('admin')->group(function () {
-
     Route::controller(ContactUsController::class)->group(function () {
         route::get('/messages', [ContactUsController::class, 'index'])->name('messages');
     });

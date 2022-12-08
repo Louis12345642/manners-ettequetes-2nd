@@ -44,7 +44,7 @@ export default {
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6 container">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                 <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                    <img src="/atomic.jpg" alt="" class="rounded-xl" />
+                    <img :src="singlePost.image_name" alt="" class="rounded-xl" />
 
                     <p class="mt-4 block text-gray-400 text-xs">
                         Published
@@ -62,7 +62,7 @@ export default {
                     >
                         <img
                             class="mt-7 w-16 h-16 rounded-full round-border"
-                            src="https://i.pravatar.cc/60"
+                            :src="singlePost.image_name"
                             alt=""
                         />
                         <div class="ml-5 text-left mt-5">
