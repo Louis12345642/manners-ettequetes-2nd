@@ -12,7 +12,8 @@ user:Array
 let {user} = toRefs(props)
 const form = useForm({
     name:user.value.name,
-    email:user.value.email
+    email:user.value.email,
+
 })
 
 const submit = ()=>{

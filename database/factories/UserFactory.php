@@ -20,6 +20,7 @@ class UserFactory extends Factory
         $name=fake()->name();
         return [
             'name' => $name,
+            'avater'=> fake()->imageUrl($width=200, $height=200),
             'username'=>Str::snake($name),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

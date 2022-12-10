@@ -82,10 +82,11 @@ const short = (title, limit) => {
                             </Link>
                             <img
                                 class="mt-4 ml-4 w-10 h-10 rounded-full round-border"
-                                src="atomic.jpg"
+                                :src="post.author.avater"
                                 alt=""
                             />
                         </div>
+
                         <!-- readmore button -->
                         <div class="p-4 mt-2">
                             <Link :href="route('post.show', post.slug)">

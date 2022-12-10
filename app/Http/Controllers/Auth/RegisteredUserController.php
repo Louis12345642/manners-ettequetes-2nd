@@ -48,6 +48,7 @@ class RegisteredUserController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
+            'avater' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
@@ -62,8 +63,16 @@ class RegisteredUserController extends Controller
 
    // Display the username
 // dd($username);
+
+
+$avater =  $request->file('avater');
+
+$avater_name = $avater->getClientOriginalName();
+$avater->move(public_path('/'),$avater_name);
+$avater_path = "/" . $avater_name;
         $user = User::create([
             'name' => $request->name,
+            'avater' =>$avater_path,
             'username' => $username,
             'email' => $request->email,
             'password' => Hash::make($request->password),

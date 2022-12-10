@@ -82,6 +82,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/users/{user:username}', 'edit')->name('user.edit');
         Route::put('/users/update{user:username}', 'update')->name('user.update');
         Route::delete('/users/delete/{user:username}', 'destroy')->name('user.delete');
+        Route::put('avater/update{user:username}', 'storeAvater')->name('avater.add');
     });
 });
 
@@ -96,6 +97,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/post/edit/{post:slug}', 'edit')->name('post.edit');
         Route::put('/post/{post:slug}', 'update')->name('post.update');
         Route::delete('/post/{post:slug}', 'destroy')->name('post.delete');
+
     });
 });
 

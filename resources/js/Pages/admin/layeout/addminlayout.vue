@@ -1,18 +1,46 @@
 <script setup>
 import layeoutVue from "@/Layouts/layeout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import { usePage } from "@inertiajs/inertia-vue3";
 import allPostsHeaderVue from "@/Components/hero-section/all-posts-header.vue";
+import { useForm } from '@inertiajs/inertia-vue3'
 import SelectMenu from "@/Components/selectMenu.vue";
+import { Inertia } from '@inertiajs/inertia';
 import categorySelect from "../../../Components/categorySelect.vue"
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { toRefs } from "@vue/reactivity";
 
 let  props = defineProps({
+    user:Array,
     posts: Array,
     message:String,
     Errormessage:String
 });
 
 let {message}=toRefs(props);
+
+// let username =usePage().props.value.auth.user.username
+
+// const form =useForm({
+
+// avater:this.$event.target.files[0],
+
+// });
+
+// const submit =()=>{
+//     form.put(route('avater.add',username),form,{
+//         forceFormData: true,
+//     })
+// }
+
+// const form = useForm({
+//     name:user.value.name,
+//     email:user.value.email
+// })
+
+// const submit = ()=>{
+// form.put(route('user.update',user.value.username),form)
+// }
 
 </script>
 
@@ -71,7 +99,7 @@ let {message}=toRefs(props);
 
                 <div class="z-10 cursor-pointer">
                     <div class="profile"  onclick="menuToggle();">
-                    <span><img class="w-10 h-10" src="/user.png" alt=""></span>
+                    <span><img class="w-10 h-10 rounded-full" :src="$page.props.auth.user.avater" alt=""></span>
                     </div>
                     <div v-if="$page.props.auth.user" class="action card-border ml-2">
            <div  class="menu ">
@@ -80,6 +108,8 @@ let {message}=toRefs(props);
                 <div>
                    {{ $page.props.auth.user.email}}
                 </div>
+
+
             </h3>
             <ul class="ml-8">
                 <li>
@@ -100,7 +130,7 @@ let {message}=toRefs(props);
 
             <div class="lg:col-span-1 card-bg h-screen card-border p-4 cars-border">
                 <div class="flex justify-center p-4">
-                    <img class="w-20 h-20 rounded-full card-border-2 " src="https://i.pravatar.cc/60" alt="">
+                    <img class="w-20 h-20 rounded-full card-border-2 " :src="$page.props.auth.user.avater" alt="">
 
 
                 </div>

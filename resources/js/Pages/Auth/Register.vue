@@ -11,6 +11,7 @@ const form = useForm({
     name: '',
     email: '',
     password: '',
+    avater:null,
     password_confirmation: '',
     terms: false,
 });
@@ -18,6 +19,7 @@ const form = useForm({
 const submit = () => {
     form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
+        forceFormData: true,
     });
 };
 </script>
@@ -52,7 +54,9 @@ const submit = () => {
                 <TextInput id="password_confirmation" type="password" class="mt-1 block w-full bg-gray-100" v-model="form.password_confirmation" required autocomplete="new-password" />
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
-
+            <br>
+            <input  @input="form.avater = $event.target.files[0]" class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="file_input_help" id="file_input" type="file">
+<br>
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Already registered?
