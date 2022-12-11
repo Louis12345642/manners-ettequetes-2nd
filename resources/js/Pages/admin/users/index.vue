@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import moment from 'moment'
 import addminlayout from "../layeout/addminlayout.vue";
 import Table from "./components/Table.vue";
+import PaginationLinks from "@/Components/paginations/paginationLinks.vue";
 // import route from "vendor/tightenco/ziggy/src/js";
 defineProps({
     users: Array,
@@ -39,7 +40,9 @@ class="text-white px-6 py-4 border-0 rounded relative mb-2 bg-emerald-500 flex  
                   <Link :href="route('register')">  create user</Link>
                 </PrimaryButton>
       </div>
-        <Table :users="users" />
+        <Table :users="users.data" />
+        <br>
+        <PaginationLinks :links="users.links"></PaginationLinks>
     </addminlayout>
 </template>
 <style>

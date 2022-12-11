@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 class usersController extends Controller
 {
 public function index(){
-    $users = User::latest()->get();
+    $users = User::latest()->filter(request(['search']))->paginate(10);
     return inertia('admin/users/index',compact('users'));
 }
 

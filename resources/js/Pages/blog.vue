@@ -4,42 +4,32 @@ import layeoutVue from '@/Layouts/layeout.vue';
 import AllPostsHeader from "../Components/hero-section/all-posts-header.vue";
 import { Link } from '@inertiajs/inertia-vue3'
 import paginationLinks from '../Components/paginations/paginationLinks.vue'
+import { useForm } from '@inertiajs/inertia-vue3';
 defineProps({
     posts:Array
 })
+const form =useForm({
+ search:null
+
+
+});
+
+const submit =()=>{
+    form.get('#',form)
+}
 </script>
 <template>
     <layeoutVue>
 
         <header class="max-w-xl mx-auto mt-20 text-center w-full h-full m-10">
-            <!-- <div v-if="$page.props.auth.user">
-                 <h2
-                    class="font-mono font-semibold text-lg text-center mt-20 text-gray-600 md:text-2xl lg:3xl"
-                >
-                    welcome back
-                    <span class="secondary-color">
-                        {{ $page.props.auth.user.name }}</span
-                    >
-                </h2> -->
-                <!-- <div class="flex gap-3 justify-center">
-                    <p
-                        class="mt-10 align-bottom font-sans font-semibold text-gray-500"
-                    >
-                        {{ $page.props.auth.user.name }}
-                    </p>
-                    <img
-                        class="mt-7 w-12 h-12 rounded-full round-border"
-                        src="logo.jpg"
-                        alt=""
-                    />
-                </div> -->
+
 
             <AllPostsHeader title="letest blog posts " />
 
 
             <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-2 mb-5"></div>
 
-            <form method="GET" action="#" class="flex items-center m-6">
+            <form @submit.prevent="submit"  class="flex items-center m-6">
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">
                     <div
@@ -60,6 +50,7 @@ defineProps({
                         </svg>
                     </div>
                     <input
+                      v-model="form.search"
                         name="search"
                         type="text"
                         id="simple-search"

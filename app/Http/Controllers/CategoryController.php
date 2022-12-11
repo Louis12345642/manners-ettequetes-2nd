@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::latest()->filter(request(['search']))->paginate(10);
         return inertia('admin/categories/index',compact('categories'));
     }
 

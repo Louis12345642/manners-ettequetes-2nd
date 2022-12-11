@@ -66,6 +66,6 @@ const Delete = (username,name)=>{
 
         </tbody>
     </table>
-</div>post
+</div>
 
 </template>

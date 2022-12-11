@@ -62,4 +62,13 @@ class User extends Authenticatable
     public function comment(){
         return $this->hasMany(comment::class);
     }
+    public function scopeFilter($query, array $filters)
+{
+    $query->when($filters['search'] ?? false, fn($query, $search) =>
+        $query->where(fn($query) =>
+            $query->where('name', 'like', '%' . $search . '%')
+
+        )
+    );
+}
 }
