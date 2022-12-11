@@ -1,10 +1,12 @@
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-vue3";
+import paginationLinksVue from "@/Components/paginations/paginationLinks.vue";
 
 
 defineProps({
-    posts:Array
+    posts:Array,
+    links:Array
 })
 
 const Delete = (slug)=>{
@@ -64,6 +66,9 @@ const Delete = (slug)=>{
 
         </tbody>
     </table>
+
 </div>
+<br>
+<paginationLinksVue :links="links"/>
 
 </template>

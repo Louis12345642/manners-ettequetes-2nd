@@ -36,7 +36,7 @@ class PostController extends Controller
 
     public function Adminindex(Post $post)
     {
-        $posts=$post->with(['category','author'])->latest()->get();
+        $posts=$post->with(['category','author'])->filter(request(['search']))->latest()->paginate(10);
        return Inertia::render('admin/posts/index',[
 'posts'=>$posts
        ]);

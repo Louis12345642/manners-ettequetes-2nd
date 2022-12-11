@@ -21,26 +21,16 @@ let {message}=toRefs(props);
 
 // let username =usePage().props.value.auth.user.username
 
-// const form =useForm({
+const form =useForm({
+ search:null
 
-// avater:this.$event.target.files[0],
 
-// });
+});
 
-// const submit =()=>{
-//     form.put(route('avater.add',username),form,{
-//         forceFormData: true,
-//     })
-// }
+const submit =()=>{
+    form.get('#',form)
+}
 
-// const form = useForm({
-//     name:user.value.name,
-//     email:user.value.email
-// })
-
-// const submit = ()=>{
-// form.put(route('user.update',user.value.username),form)
-// }
 
 </script>
 
@@ -59,7 +49,7 @@ let {message}=toRefs(props);
 
             <section class="flex justify-end gap-10 mx-10">
                 <div>
-                    <form>
+                    <form @submit.prevent="submit">
                         <label
                             for="default-search"
                             class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -85,7 +75,8 @@ let {message}=toRefs(props);
                                     ></path>
                                 </svg>
                             </div>
-                            <input
+                            <input v-model="form.search"
+                                name="search"
                                 type="search"
                                 id="default-search"
                                 class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"

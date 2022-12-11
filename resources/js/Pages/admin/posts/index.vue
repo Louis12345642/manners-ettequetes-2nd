@@ -8,6 +8,7 @@ import { Static } from "vue";
 // import Statistic from "./statistic.vue";
 import tableVue from './components/table.vue'
 import addminlayout from '../layeout/addminlayout.vue'
+import paginationLinksVue from "@/Components/paginations/paginationLinks.vue";
 defineProps({
     posts: Array,
 });
@@ -46,8 +47,11 @@ class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-emerald-500 flex  
                 </PrimaryButton>
       </div>
 
-    <tableVue :posts="posts" />
+    <tableVue :posts="posts.data" :links="posts.links"/>
+    <br>
+
 </addminlayout>
+
 </template>
 <style>
 .card-border-2{

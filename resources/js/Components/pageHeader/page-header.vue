@@ -71,7 +71,7 @@ export default{
             <img :src="$page.props.auth.user.avater" >
         </div>
 
-           <div  class="menu">
+           <div  class="menu z-100">
             <h3>
                welcome profile
                 <div>
