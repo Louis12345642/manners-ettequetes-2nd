@@ -17,7 +17,9 @@ const form = useForm({
 })
 
 const submit = ()=>{
-form.put(route('user.update',user.value.username),form)
+form.put(route('user.update',user.value.username),form,{
+    forceFormData: true,
+})
 }
 </script>
 
@@ -57,6 +59,7 @@ form.put(route('user.update',user.value.username),form)
                             type="email"
                             placeholder="Enter email.."
                         />
+                        <!-- <input  @input="form.avater = $event.target.files[0]" class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="file_input_help" id="file_input" type="file"> -->
 
                         <button
                             type="submit"

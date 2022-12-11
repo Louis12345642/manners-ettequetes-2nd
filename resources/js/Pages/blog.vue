@@ -3,6 +3,7 @@ import Post from '@/Components/posts/post.vue';
 import layeoutVue from '@/Layouts/layeout.vue';
 import AllPostsHeader from "../Components/hero-section/all-posts-header.vue";
 import { Link } from '@inertiajs/inertia-vue3'
+import paginationLinks from '../Components/paginations/paginationLinks.vue'
 defineProps({
     posts:Array
 })
@@ -100,13 +101,9 @@ defineProps({
 
 
 <section  class="flex justify-end m-10">
-  <ul class="inline-flex items-center -space-x-px">
 
-    <li v-for="link in posts.links" :key="link.id">
-      <Link :href="link.url" v-html="link.label" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300  bg-blue-50 hover:bg-blue-100 hover:text-blue-700"></Link>
-    </li>
+    <paginationLinks :links="posts.links"/>
 
-  </ul>
     </section>
     </layeoutVue>
 </template>

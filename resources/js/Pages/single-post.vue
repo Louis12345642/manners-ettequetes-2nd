@@ -62,7 +62,7 @@ export default {
                     >
                         <img
                             class="mt-7 w-16 h-16 rounded-full round-border"
-                            :src="singlePost.image_name"
+                            :src="singlePost.author.avater"
                             alt=""
                         />
                         <div class="ml-5 text-left mt-5">
@@ -79,7 +79,7 @@ export default {
                 <div class="col-span-8">
                     <div class="hidden lg:flex justify-between mb-6">
                         <Link
-                            href="/"
+                            :href="route('blog.posts')"
                             class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500"
                         >
                             <svg
@@ -125,13 +125,21 @@ export default {
                     <div class="mt-10 'border border-gray-200 p-6 rounded-xl">
                         <form class="m-auto" @submit.prevent="submitComment">
                             <header class="flex items-center">
-                                <img
-                                    src="https://i.pravatar.cc/60?"
+                                <img v-if="$page.props.auth.user"
+                                    :src="$page.props.auth.user.avater"
                                     alt=""
                                     width="40"
                                     height="40"
                                     class="rounded-full"
                                 />
+                                <img v-else
+                                    src="/user.png"
+                                    alt=""
+                                    width="40"
+                                    height="40"
+                                    class="rounded-full"
+                                />
+
 
                                 <h2 class="ml-4">Want to participate?</h2>
                             </header>

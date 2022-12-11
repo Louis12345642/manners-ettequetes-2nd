@@ -29,7 +29,7 @@ const short = (title, limit) => {
                 <section class="m-4">
                     <img
                         class="rounded-lg card-border card-h"
-                        src="/atomic.jpg"
+                        :src="post.image_name"
                         alt=""
                     />
                 </section>
@@ -84,7 +84,7 @@ const short = (title, limit) => {
                             </Link>
                             <img
                                 class="mt-4 ml-4 w-10 h-10 rounded-full round-border"
-                                src="/atomic.jpg"
+                                :src="post.author.avater"
                                 alt=""
                             />
                         </div>

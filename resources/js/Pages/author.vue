@@ -32,7 +32,7 @@ const props = defineProps(['posts','author']);
           </p>
           <img
             class="mt-7 w-12 h-12 rounded-full round-border"
-            src="atomic-2.jpg"
+            :src="props.author.avater"
             alt=""
           />
         </div>

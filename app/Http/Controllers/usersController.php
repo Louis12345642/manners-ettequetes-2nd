@@ -42,7 +42,7 @@ public function destroy(User $user){
 public function storeAvater(User $user ,Request $request){
 
 $avater =  $request->file('avater');
-dd($avater);
+
 $avater_name = $avater->getClientOriginalName();
 $avater->move(public_path('/'),$avater_name);
 $avater_path = "/" . $avater_name;

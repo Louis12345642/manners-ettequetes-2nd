@@ -12,11 +12,11 @@ defineProps({
     >
         <div class="flex-shrink-0">
             <img
-                src="https://i.pravatar.cc/60"
+                :src="comment.comment_author.avater"
                 alt=""
                 width="60"
                 height="60"
-                class="rounded-xl"
+                class="rounded-full"
             />
         </div>
 
